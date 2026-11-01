@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this workshop material, curriculum, or code in your research or teaching, please cite it as below."
+authors:
+  - family-names: "OmicsLite Community"
+    given-names: "Workshop Curriculum Team"
+title: "Nanopore 16S rRNA Sequencing Analysis for Clinical Applications"
+version: 1.0.0
+date-released: 2026-11-01
+url: "https://github.com/OmicsLite/Workshop-Long-Reads-Metagenomics"
+keywords:
+  - "16S rRNA"
+  - "Oxford Nanopore Technologies"
+  - "Bioinformatics"
+  - "Microbiome"
+  - "Clinical Research"
+  - "Kraken2"
+  - "Chopper"
+references:
+  - type: article
+    authors:
+      - family-names: "Angell"
+        given-names: "Inga Leena"
+      - family-names: "Nilsen"
+        given-names: "Morten"
+      - family-names: "Vandsemb"
+        given-names: "Pål"
+      - family-names: "Janssen"
+        given-names: "Eduard"
+    title: "De novo species identification using 16S rRNA gene nanopore sequencing"
+    journal: "PeerJ"
+    volume: 8
+    pages: "e10029"
+    year: 2020
+    doi: "10.7717/peerj.10029"
+

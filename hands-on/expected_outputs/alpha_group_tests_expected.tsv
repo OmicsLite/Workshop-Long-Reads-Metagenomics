@@ -1,0 +1,4 @@
+metric	median_vaginal	median_sesar	U	p_value
+Observed species	32.000	23.500	29.000	0.1320
+Shannon	2.215	1.740	28.000	0.1797
+Simpson (1-D)	0.835	0.725	27.000	0.2403
