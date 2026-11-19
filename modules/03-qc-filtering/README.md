@@ -8,6 +8,9 @@ Setelah menyelesaikan modul ini, peserta mampu:
 4. Memilih parameter pembersihan yang tepat (panjang minimum, panjang maksimum, dan rata-rata skor Phred) menggunakan utilitas modern **Chopper** (atau **SeqKit**).
 5. Memahami batasan filtering panjang dalam mendeteksi molekul *chimera* PCR.
 
+> [!TIP]
+> **⚡ Inti dalam 30 Detik**: Prinsip bioinformatika nomor 1 adalah **"Garbage In, Garbage Out"**. Sebelum menebak nama bakteri, kita wajib melihat mutu data mentah (`SeqKit` & `NanoPlot`), lalu menyaring sekuens yang terlalu pendek, terlalu panjang, atau terlalu buram menggunakan **`Chopper`** (`1.000–1.700 bp`, `Q ≥ 10`).
+
 ---
 
 ## 1. Memahami Struktur FASTQ & Skor Kualitas Phred
@@ -46,6 +49,13 @@ $$\text{ASCII Code} = Q + 33$$
 
 > [!CAUTION]
 > Jangan tertukar: karakter ASCII `?` mewakili **Q30** (ASCII 63), bukan Q20 (ASCII 53 = karakter `5`). Pada data Nanopore R9.4.1 (seperti PRJNA637202), sebagian besar karakter baris 4 berada di kisaran `+` s.d. `1` ($Q10$–$Q16$).
+
+> [!TIP]
+> **💡 Cara Cepat Menghafal Q-Score (Tanpa Menghitung Logaritma!)**:
+> Setiap nilai $Q$ naik **+10**, peluang error turun **10× lipat**:
+> - **Q10** = 1 salah dari 10 (akurasi 90%)
+> - **Q20** = 1 salah dari 100 (akurasi 99%)
+> - **Q30** = 1 salah dari 1.000 (akurasi 99,9%)
 
 ---
 
@@ -104,5 +114,9 @@ seqkit seq -m 1000 -M 1700 -Q 10 input.fastq.gz -o filtered.fastq.gz
 - Format FASTQ menyimpan ID sekuens, basa DNA, dan kualitas per-basa Phred+33.
 - Nilai $Q10$ setara dengan akurasi 90%, $Q20$ setara 99%, dan $Q30$ setara 99.9%.
 - `NanoPlot` dan `SeqKit` memberikan gambaran menyeluruh statistik kualitas data mentah.
-- `Chopper` menyaring sekuens berdasarkan panjang (1.000–1.700 bp) dan skor kualitas ($Q \ge 10$) secara efisien.
+- `Chopper` bekerja seperti **ayakan saringan biji kopi**: hanya meloloskan sekuens dengan ukuran pas (1.000–1.700 bp) dan mutu memadai ($Q \ge 10$).
 - Filter panjang tidak dapat mendeteksi chimera berukuran normal; deteksi chimera memerlukan pendekatan algoritmik bioinformatika lanjutan.
+
+### ✅ Cek Paham Cepat (1 Menit)
+1. Tanpa melihat rumus, berapakah akurasi persentase untuk skor **Q20** dan **Q30**?
+2. Jika kita sudah memfilter panjang ke 1.000–1.700 bp, apakah sampel kita dijamin 100% bebas *PCR chimera*? Mengapa?

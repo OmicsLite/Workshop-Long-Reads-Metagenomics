@@ -8,6 +8,7 @@ ehthumbs.db
 Thumbs.db
 .vscode/
 .idea/
+.licenses/
 
 # Python & Jupyter artifacts
 __pycache__/
@@ -45,3 +46,4 @@ hands-on/database_16s/
 *.k2d
 *.kmer_distrib
 *.zip
+

@@ -8,6 +8,9 @@ Setelah menyelesaikan modul ini, peserta mampu:
 4. Mengidentifikasi sumber bias eksperimental: lisis sel/ekstraksi DNA, bias primer PCR, serta variasi jumlah salinan gen 16S (*Copy Number Variation* / CNV).
 5. Memahami pentingnya kontrol negatif (*kitome/splashome*) dan kontrol positif (*mock community*) dalam riset mikrobioma klinis.
 
+> [!TIP]
+> **⚡ Inti dalam 30 Detik**: **16S amplicon** itu seperti membaca **daftar isi / KTP bakteri saja** (cepat, murah, mengabaikan DNA manusia), sedangkan **shotgun metagenomics** itu membaca **seluruh isi buku** (bakteri, virus, jamur, gen resistensi antibiotik, sekaligus DNA manusia). Ingat pula: data 16S selalu punya bias lab basah, sehingga kontrol negatif dan positif sangat krusial!
+
 ---
 
 ## 1. 16S rRNA Amplicon Sequencing vs Shotgun Metagenomics
@@ -73,8 +76,11 @@ flowchart TD
    - *Bifidobacterium longum*: 4 kopi
    - *Bacteroides fragilis*: 6 kopi
    - *Escherichia coli*: 7 kopi
-   - *Clostridium difficile*: 11–12 kopi
+   - *Clostridioides difficile* (sebelumnya *Clostridium difficile*): 11–12 kopi
    Akibatnya, bakteri dengan jumlah kopi gen 16S tinggi akan menghasilkan sinyal *reads* yang melimpah secara artifisial, meskipun jumlah sel fisiknya sama dengan bakteri berkopi 1.
+
+> [!TIP]
+> **💡 Analogi Sederhana (Kartu Nama di Kotak Undian)**: Bayangkan 1 sel *C. difficile* memasukkan **12 kartu nama** ke kotak undian, sementara bakteri lain hanya memasukkan **1 kartu nama**. Saat kita mengambil acak dari kotak (sekuensing), *C. difficile* tampak 12 kali lebih ramai—padahal jumlah sel aslinya sama-sama satu!
 
 ---
 
@@ -96,3 +102,7 @@ Dalam penelitian klinis dan forensik mikrobioma, dua kontrol eksperimental adala
 - Dataset PRJNA637202 menargetkan wilayah **V3–V9 (~1.140 bp)** pada mikrobioma usus bayi.
 - Sinyal kelimpahan 16S dipengaruhi oleh bias ekstraksi, bias PCR, dan variasi jumlah kopi operon 16S per genom.
 - Deteksi takson tanpa kontrol negatif (*kitome*) dan kontrol positif (*mock community*) berisiko tinggi menimbulkan kesimpulan biologis yang salah.
+
+### ✅ Cek Paham Cepat (1 Menit)
+1. Jika Anda ingin mencari gen resistensi antibiotik (AMR) atau virus dalam sampel klinis, apakah 16S amplicon cocok? Mengapa?
+2. Mengapa batas bawah panjang filter pada dataset kita diatur ke **1.000 bp**, bukan 1.300 bp?

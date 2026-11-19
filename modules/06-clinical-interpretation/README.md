@@ -9,6 +9,9 @@ Setelah menyelesaikan modul ini, peserta mampu:
 5. Membedakan secara tegas antara deteksi sekuens molekuler, kolonisasi mikroba, dan infeksi klinis aktif.
 6. Menetapkan batasan etis antara analisis mikrobioma untuk **pendidikan/penelitian eksploratif** dengan **diagnostik klinis terakreditasi**.
 
+> [!TIP]
+> **⚡ Inti dalam 30 Detik**: Modul ini adalah **"rem pengaman ilmiah"** bagi klinisi & peneliti. Ingat 3 aturan emas: (1) **Persentase naik $\neq$ bakteri bertambah banyak** (sifat komposisional); (2) **Ada DNA bakteri $\neq$ bakteri hidup $\neq$ infeksi klinis**; dan (3) **Asosiasi di 12 sampel $\neq$ sebab-akibat maupun diagnosis pasien**.
+
 ---
 
 ## 1. Nomenklatur Filum Bakteri Resmi: Pembaruan ICNP 2021
@@ -52,7 +55,11 @@ flowchart TD
     end
 ```
 
-Jika terjadi penurunan drastis pada genus *Bacteroides*, persentase *Bifidobacterium* akan terlihat melonjak menjadi 90%, **meskipun jumlah fisik sel *Bifidobacterium* sebenarnya tidak bertambah**!
+Jika terjadi penurunan drastis pada genus *Bacteroides*, persentase *Bifidobacterium* akan terlihat melonjak dari 50% menjadi 90%, **padahal jumlah fisik sel *Bifidobacterium* sebenarnya justru sedikit MENURUN (dari 1.000.000 menjadi 900.000 sel)**!
+
+> [!TIP]
+> **💡 Analogi Sederhana (Potongan Kue Pizza)**: Total kue selalu 100%. Jika porsi satu pihak menyusut drastis, persentase porsi pihak lain akan tampak melonjak besar di grafik—meskipun ukuran aslinya tetap atau bahkan ikut menyusut!
+
 Oleh sebab itu:
 - Jangan pernah menyimpulkan bahwa takson mikroba "tumbuh lebih banyak" hanya berdasarkan peningkatan kelimpahan relatif.
 - Pengukuran kelimpahan absolut membutuhkan kalibrasi tambahan di lab basah, seperti *spike-in internal control* sintetik atau penghitungan total bakteri via *quantitative PCR* (qPCR) gen 16S atau *flow cytometry*.
@@ -92,8 +99,12 @@ flowchart LR
 
 Saat menuliskan laporan atau naskah publikasi, gunakan pola 4 langkah:
 
-1. **Observasi**: *"Berdasarkan profil genus dari 12 sampel feses bayi usia 3 bulan..."*
-2. **Angka Objektif**: *"Median kelimpahan relatif genus Bacteroides terukur sebesar 18.4% pada kelompok persalinan vaginal dibandingkan 0.2% pada kelompok sesar (Mann–Whitney U = 2.0, p = 0.0087, q = 0.042)..."*
+1. **Observasi**: *"Berdasarkan profil taksonomi (genus & spesies) dari 12 sampel feses bayi usia 3 bulan..."*
+2. **Angka Objektif**: *"Median kelimpahan relatif genus Bacteroides (termasuk spesies terarah B. fragilis) terukur jauh lebih tinggi pada kelompok persalinan vaginal dibandingkan kelompok sesar (Mann–Whitney U, p = ..., q = ...)..."*
 3. **Ketidakpastian & Faktor Perancu**: *"Namun demikian, ukuran sampel pada demonstrasi ini terbatas ($n=6$ per kelompok) dan kovariat klinis penting seperti pola pemberian ASI dan penggunaan antibiotik maternal tidak dikontrol dalam subset ini..."*
 4. **Batas Kesimpulan**: *"Oleh karena itu, temuan ini menunjukkan asosiasi perbedaan komposisi awal mikrobioma usus dan tidak dapat disimpulkan sebagai hubungan kausalitas langsung dari metode persalinan."*
+
+### ✅ Cek Paham Cepat (1 Menit)
+1. Jika hasil 16S feses pasien menunjukkan *Escherichia coli* sebesar 25%, apakah itu berarti pasien sedang mengalami infeksi saluran cerna oleh *E. coli*? Mengapa?
+2. Apa nama filum resmi terbaru (ICNP 2021) untuk *Firmicutes* dan *Bacteroidetes*?
 

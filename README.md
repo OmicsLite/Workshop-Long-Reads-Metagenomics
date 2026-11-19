@@ -1,6 +1,6 @@
 # 🧬 Nanopore 16S rRNA Sequencing Analysis for Clinical Applications
 
-[![Google Colab](https://img.shields.io/badge/Google%20Colab-Active-orange?logo=googlecolab&style=flat-square)](https://colab.research.google.com/)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/OmicsLite/Workshop-Long-Reads-Metagenomics/blob/main/hands-on/gut_microbiome_16s.ipynb)
 [![Bioinformatics](https://img.shields.io/badge/Bioinformatics-16S%20Amplicon-blue?style=flat-square)](#)
 [![Nanopore](https://img.shields.io/badge/Sequencing-Oxford%20Nanopore-yellow?style=flat-square)](#)
 [![Community](https://img.shields.io/badge/Community-OmicsLite-emerald?style=flat-square)](#)
@@ -10,6 +10,16 @@
 Repositori ini berisi kurikulum ilmiah, modul teori terstruktur, dan lingkungan praktikum komputasi terpadu untuk workshop **"Nanopore 16S rRNA Sequencing Analysis for Clinical Applications"**. 
 
 Workshop ini dirancang bagi klinisi, mahasiswa kedokteran, biologi, biomedis, dan peneliti pemula untuk memahami prinsip sekuensing generasi ketiga (Oxford Nanopore Technologies), melakukan kendali mutu (*quality control*), mengklasifikasikan taksonomi bakteri, menganalisis keanekaragaman komunitas (*alpha/beta diversity*), serta menarik kesimpulan biologis secara bertanggung jawab dalam konteks penelitian kesehatan.
+
+> [!TIP]
+> **🗺️ Peta Belajar Cepat (Big Picture dalam 10 Detik)**
+> Jangan terintimidasi oleh banyaknya istilah teknis! Seluruh workshop ini sebenarnya hanya mengikuti **6 langkah sederhana**:
+> 1. **Kenali Datanya** ([Modul 01](modules/01-nanopore-101/README.md)): Bagaimana Nanopore mengubah sinyal listrik DNA menjadi huruf `A, C, G, T`.
+> 2. **Kenali Desainnya** ([Modul 02](modules/02-metagenomics/README.md)): Mengapa kita memakai gen penanda 16S (bukan *shotgun*) & apa saja bias lab-basahnya.
+> 3. **Saring Sampahnya** ([Modul 03](modules/03-qc-filtering/README.md)): Membuang bacaan pendek, terlalu panjang, atau buram dengan `Chopper`.
+> 4. **Beri Nama Bakterinya** ([Modul 04](modules/04-classification/README.md)): Mencocokkan sekuens ke database `NCBI Targeted Loci` via `Kraken2` (Genus & Spesies).
+> 5. **Bandingkan Kelompoknya** ([Modul 05](modules/05-visualization/README.md)): Melihat pola & uji statistik bayi Vaginal vs Sesar (`Krona`, `Alpha/Beta Diversity`, `PERMANOVA`).
+> 6. **Tafsirkan Secara Bijak** ([Modul 06](modules/06-clinical-interpretation/README.md)): Membedakan asosiasi riset dari diagnosis klinis.
 
 ---
 

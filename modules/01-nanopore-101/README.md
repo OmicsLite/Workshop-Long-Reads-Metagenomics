@@ -7,6 +7,9 @@ Setelah menyelesaikan modul ini, peserta mampu:
 3. Memahami alur kerja *basecalling* deep learning modern (**Dorado**) dari format biner `.pod5` menjadi file teks **FASTQ**.
 4. Mengenali profil kesalahan (*error profile*) khas Nanopore (*homopolymer insertions/deletions*) dan implikasinya terhadap klasifikasi taksonomi.
 
+> [!TIP]
+> **⚡ Inti dalam 30 Detik**: Bayangkan Nanopore seperti **pintu tol bersensor listrik**. Saat untai DNA panjang lewat, setiap huruf (`A, C, G, T`) memberi hambatan listrik berbeda. Komputer (*Dorado*) lalu menerjemahkan gelombang listrik itu menjadi teks DNA (`FASTQ`). Keunggulannya: **bacaan sangat panjang**; kelemahan klasiknya: mudah keliru menghitung huruf kembar beruntun (mis. `AAAAA` vs `AAAAAA`).
+
 ---
 
 ## 1. Evolusi Teknologi Sekuensing & Posisi Nanopore
@@ -38,9 +41,12 @@ Prinsip kerja alat sekuensing Nanopore (seperti MinION, GridION, PromethION) men
 
 1. **Membran Polimer Sintetis**: Membran resistif elektrik yang tidak dapat ditembus ion memisahkan dua kompartemen larutan elektrolit (*cis* dan *trans*).
 2. **Protein Nanopori**: Saluran protein nano (misal CsgG terekayasa) disematkan ke dalam membran.
-3. **Arus Ionik Dasar (*Baseline Current*)**: Medan listrik potensial diterapkan melintasi membran sehingga ion ($K^+$, $Cl^-$) mengalir menembus saluran pori, menghasilkan arus nanoampere ($pA$) yang stabil.
+3. **Arus Ionik Dasar (*Baseline Current*)**: Medan listrik potensial diterapkan melintasi membran sehingga ion ($K^+$, $Cl^-$) mengalir menembus saluran pori, menghasilkan arus pikoampere ($pA$) yang stabil.
 4. **Motor Enzim Translokasi**: Molekul motor (helikase) membuka untai ganda DNA dan menuntun untai tunggal meluncur melewati rongga penyempitan pori (*reader constriction*) dengan kecepatan terkontrol (~400–450 basa/detik).
 5. **Modulasi Hambatan Arus**: Saat $k$-mer basa nukleotida (kombinasi 5–6 nukleotida) berada di dalam pori, ukuran molekul dan muatannya merintangi aliran ion secara spesifik, menghasilkan pola fluktuasi arus listrik khas terhadap waktu (*squiggles*).
+
+> [!TIP]
+> **💡 Analogi Sederhana (Gerbang Tol & Kode Morse)**: Bayangkan arus ion seperti aliran mobil melewati gerbang tol sempit. Ketika untai DNA (seperti kereta berisi berbagai bentuk gerbong `A, C, G, T`) melintas di dalam pori, tiap kombinasi huruf menghalangi arus dengan pola berbeda—seperti **kode Morse listrik** yang dibaca secara *real-time*.
 
 ---
 
@@ -71,12 +77,16 @@ Sekuensing Nanopore memiliki kelemahan historis pada daerah **homopolimer** (ren
 
 ### Konsekuensi Bioinformatika:
 1. **Kegagalan Algoritma ASV Konvensional (Short-Read)**: Algoritma seperti DADA2 standar atau Deblur mengasumsikan error sekuensing bersifat substitusi independen berfrekuensi rendah. Pada data Nanopore R9.4.1, indel membuat hampir setiap *read* tampak unik, sehingga pendekatan ASV konvensional memecah kelimpahan menjadi ribuan varian palsu.
-2. **Kebutuhan Metode Berbasis Resiliensi Indel**: Oleh sebab itu, analisis 16S Nanopore mengandalkan klasifikasi *minimizer* $k$-mer (`Kraken2`) pada tingkat genus, atau penjajaran probabilistik (*alignment-based Expectation-Maximization* seperti **`Emu`**) yang memodelkan profil error Nanopore untuk mencapai resolusi spesies.
+2. **Kebutuhan Metode Berbasis Resiliensi Indel**: Oleh sebab itu, analisis 16S Nanopore mengandalkan klasifikasi *minimizer* $k$-mer (`Kraken2` + database NCBI Targeted Loci untuk profil genus & spesies), atau penjajaran probabilistik (*alignment-based Expectation-Maximization* seperti **`Emu`**) yang memodelkan profil error Nanopore untuk akurasi spesies yang lebih tinggi.
 
 ---
 
 ## 5. Ringkasan Modul
-- Oxford Nanopore mendeteksi DNA molekul tunggal secara *real-time* via fluktuasi arus ionik membran.
+- Oxford Nanopore mendeteksi DNA molekul tunggal secara *real-time* via fluktuasi arus ionik membran (skala pikoampere, $pA$).
 - Kimia **R9.4.1** (dataset praktikum) memiliki kualitas rerata Q10–Q12, sedangkan **R10.4.1** modern mencapai >Q20.
 - Sinyal mentah `.pod5` diterjemahkan menjadi file `.fastq` oleh basecaller deep learning **Dorado**.
 - Error homopolimer indel menuntut pemilihan alat bioinformatika yang secara spesifik dirancang tahan terhadap karakteristik error sekuensing panjang.
+
+### ✅ Cek Paham Cepat (1 Menit)
+1. Mengapa dataset praktikum kita (kimia R9.4.1) disaring di ambang kualitas **Q10**, bukan Q30 seperti data Illumina?
+2. Mengapa rentetan huruf kembar seperti `AAAAAAA` lebih sering memicu error indel pada pori Nanopore?

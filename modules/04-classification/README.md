@@ -8,6 +8,9 @@ Setelah menyelesaikan modul ini, peserta mampu:
 4. Memahami struktur file model distribusi k-mer Bracken (`database1000mers.kmer_distrib`) dan pertimbangan metodologis penggunaannya.
 5. Mengenali peran komplementer perangkat lunak berbasis penjajaran dan algoritma *Expectation-Maximization* (**`Emu`**) untuk penentuan spesies pada data Nanopore 16S.
 
+> [!TIP]
+> **⚡ Inti dalam 30 Detik**: **Kraken2** adalah "mesin pencari super cepat" yang memotong sekuens DNA menjadi potongan kata pendek ($k$-mer) lalu mencocokkannya ke kamus resmi **NCBI Targeted Loci** (~8,6 MB). Jika buktinya unik, ia melabeli hingga **Spesies**; jika ambigu di antara beberapa spesies dekat, ia bersikap jujur dengan naik ke **Genus/Famili (LCA)**.
+
 ---
 
 ## 1. Algoritma Kraken2: Pencocokan Minimizer $k$-mer & LCA
@@ -26,6 +29,9 @@ flowchart TD
 
 ### Prinsip Lowest Common Ancestor (LCA)
 Jika sekumpulan $k$-mer sepanjang 35 bp ditemukan identik pada beberapa spesies berkerabat dekat (misal di antara spesies dalam genus *Bacteroides* atau famili *Enterobacteriaceae*), Kraken2 tidak akan menebak secara sembarangan, melainkan menaikkan penugasan ke simpul leluhur bersama terdekat (*Lowest Common Ancestor* / LCA).
+
+> [!TIP]
+> **💡 Analogi Sederhana (Detektif Kamus yang Jujur)**: Bayangkan Anda menemukan sobekan halaman bertuliskan *"berkaki empat, berkumis, suka ikan"*. Karena cocok dengan kucing kampung maupun kucing Persia, detektif yang jujur akan melapor: *"Ini keluarga Kucing (Genus)"*—bukan asal menebak rasnya! Itulah cara kerja **LCA** pada Kraken2.
 
 ### Parameter Confidence Threshold (`--confidence 0.05`)
 Secara default, satu kecocokan $k$-mer minimizer saja sudah dapat melabeli suatu takson. Pada data Nanopore yang memiliki variasi error per-basa lebih tinggi, kita menerapkan:
@@ -80,7 +86,13 @@ Hirarki Keyakinan Identifikasi:
 Bagi penelitian mikrobioma yang secara khusus membutuhkan profiling tingkat spesies dengan akurasi analitis tertinggi dari data bacaan panjang Nanopore, alat mutakhir yang direkomendasikan di literatur adalah **`Emu`** (Curry et al., 2022, *Nature Methods*):
 
 * **Prinsip Kerja Emu**: Menggunakan penjajaran *semi-global* `minimap2` terhadap database gabungan rrnDB + NCBI, kemudian memecahkan ambiguitas multi-mapping antarspesies dekat menggunakan algoritma iteratif *Expectation-Maximization* (EM).
-* **Perbandingan Praktis**: Kraken2 dengan database NCBI Targeted Loci memberikan kecepatan komputasi instan (<1 menit untuk 12 sampel di Google Colab) sehingga sangat ideal untuk hands-on workshop, sementara `Emu` menjadi rujukan ilmiah lanjutan untuk analisis mendalam pasca-workshop.
+* **Perbandingan Praktis**:
+
+| Pendekatan | Kecepatan | Resolusi Utama | Cocok Digunakan Saat... |
+|---|---|---|---|
+| **Kraken2 + NCBI Targeted Loci** *(Alur Utama Workshop)* | Sangat cepat (<1 detik/sampel) | Genus (sangat kuat) & Spesies terarah (*putative*) | Eksplorasi cepat, workshop di Google Colab, screening awal |
+| **Kraken2 + Bracken (1.000 bp)** *(Pengayaan)* | Sangat cepat | Re-estimasi kelimpahan Bayesian ke tingkat Spesies/Genus | Ingin mendistribusikan ulang read LCA secara probabilistik (waspadai *over-assignment* pada R9.4.1) |
+| **Emu (`minimap2` + EM)** *(Standar Emas Riset)* | Sedang–Lambat (butuh RAM/CPU lebih besar) | Spesies akurasi tinggi (tahan error indel Nanopore) | Publikasi jurnal ilmiah & profil spesies mendalam di server lokal/HPC |
 
 ---
 
@@ -89,3 +101,7 @@ Bagi penelitian mikrobioma yang secara khusus membutuhkan profiling tingkat spes
 - Database **NCBI Targeted Loci 16S/18S** dari ONT EPI2ME Labs berukuran sangat ringkas (~8.6 MB) dan mendukung identifikasi hingga tingkat **Spesies** (`rank = S`).
 - Penugasan taksonomi tingkat spesies pada 16S harus diinterpretasikan secara bertanggung jawab dengan menyadari adanya spesies berkerabat dekat yang memiliki sekuens 16S identik.
 - Analisis komparatif pada tingkat Genus tetap disediakan sebagai kontrol metodologis yang saling melengkapi.
+
+### ✅ Cek Paham Cepat (1 Menit)
+1. Jika sebuah *read* cocok dengan *Bacteroides fragilis* sekaligus *Bacteroides ovatus*, ke tingkat manakah Kraken2 LCA akan menempatkannya?
+2. Mengapa label spesies *Escherichia coli* pada hasil 16S rRNA tidak boleh langsung disimpulkan pasti bukan *Shigella*?

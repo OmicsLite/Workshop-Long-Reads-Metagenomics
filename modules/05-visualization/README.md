@@ -1,13 +1,20 @@
-# Modul 05: Visualisasi, Ekologi Komunitas & Analisis Diversity (Tingkat Spesies)
+# Modul 05: Visualisasi, Ekologi Komunitas & Analisis Diversity (Genus & Spesies)
 
 ## 🎯 Target Pembelajaran
 Setelah menyelesaikan modul ini, peserta mampu:
-1. Memahami konsep ekologi komunitas mikroba: **Alpha Diversity** (keanekaragaman di dalam sampel) dan **Beta Diversity** (perbedaan komposisi antar-sampel) pada **tingkat Spesies** (dengan kontrol komparatif Genus).
-2. Menghitung dan menginterpretasikan metrik keanekaragaman: **Observed Species**, **Shannon Index ($H'$)**, dan **Simpson Index ($1-D$)**.
-3. Menjelaskan perlunya standardisasi kedalaman sampling melalui **Rarefaction** sebelum membandingkan keragaman spesies antar-sampel.
-4. Menghitung jarak ketidaksamaan komposisi spesies menggunakan **Bray–Curtis Dissimilarity** dan memvisualisasikannya via **Principal Coordinates Analysis (PCoA)**.
+1. Memahami konsep ekologi komunitas mikroba: **Alpha Diversity** (keanekaragaman di dalam sampel) dan **Beta Diversity** (perbedaan komposisi antar-sampel) pada tingkat **Genus** (kedalaman tinggi untuk statistik) dan eksplorasi **Spesies**.
+2. Menghitung dan menginterpretasikan metrik keanekaragaman: **Observed Taxa**, **Shannon Index ($H'$)**, dan **Simpson Index ($1-D$)**.
+3. Menjelaskan perlunya standardisasi kedalaman sampling melalui **Rarefaction** sebelum membandingkan keragaman antar-sampel.
+4. Menghitung jarak ketidaksamaan komposisi menggunakan **Bray–Curtis Dissimilarity** dan memvisualisasikannya via **Principal Coordinates Analysis (PCoA)**.
 5. Menguji signifikansi perbedaan struktur komunitas antar-kelompok (persalinan Vaginal vs Sesar) dengan **PERMANOVA** serta mengoreksi pengujian hipotesis multipel dengan **Benjamini–Hochberg False Discovery Rate (FDR)**.
 6. Mengoperasikan visualisasi radial bertingkat interaktif menggunakan **Krona Plot** berbasis taksonomi NCBI.
+
+> [!TIP]
+> **⚡ Inti dalam 30 Detik**: Jangan takut dengan istilah statistik! Ingat 4 gambar besar saja:
+> - **Krona Plot** = diagram lingkaran interaktif untuk *melihat isi satu sampel*.
+> - **Rarefaction** = *menyamakan jumlah tarikan jaring* agar perbandingan antar-sampel adil.
+> - **Alpha Diversity** = seberapa *beragam isi di dalam satu sampel* (kaya jenis & merata).
+> - **Beta Diversity + PCoA + PERMANOVA** = *peta jarak* untuk melihat apakah kelompok Vaginal dan Sesar benar-benar terpisah!
 
 ---
 
@@ -34,9 +41,13 @@ Sampel A (36.000 reads) = Mendeteksi 45 spesies (peluang menemukan spesies langk
 Sampel B (26.000 reads) = Mendeteksi 30 spesies (bukan karena kurang kaya, tapi kurang disampling!)
 ```
 
-Untuk membandingkan kekayaan spesies secara adil, kita melakukan **Rarefaction**:
+Untuk membandingkan kekayaan takson secara adil, kita melakukan **Rarefaction**:
 - Mengambil subsampel acak (*sampling without replacement*) dari setiap sampel hingga mencapai kedalaman konstan yang sama ($N = \text{kedalaman terkecil}$).
 - Pada notebook kita, ini dihitung secara matematis menggunakan distribusi hipergeometrik multivariat (`multivariate_hypergeometric`) dengan *seed* acak tetap (`SEED = 42`) untuk menjamin reprodusibilitas 100%.
+- **Catatan Praktikum (Genus vs Spesies)**: Karena algoritma LCA Kraken2 pada data R9.4.1 menempatkan ribuan *reads* per sampel di tingkat **Genus** dan hanya sebagian kecil di tingkat Spesies, langkah rarefaction & uji ekologi komunitas dijalankan pada matriks **Genus** agar kedalaman sampling tetap tinggi dan bebas bias, sedangkan eksplorasi **Spesies** disajikan secara paralel pada grafik komposisi & Krona Plot.
+
+> [!TIP]
+> **💡 Analogi Sederhana (Menjaring Ikan di Dua Kolam)**: Jika Anda menjaring 100 kali di Kolam A dan hanya 10 kali di Kolam B, wajar bila Kolam A tampak punya lebih banyak jenis ikan! **Rarefaction** menyamakan jumlah tarikan jaring menjadi sama-sama 10 kali agar perbandingan kekayaan jenis benar-benar adil.
 
 ---
 
@@ -53,7 +64,10 @@ flowchart LR
 
 ### Rumus Matematis Shannon Index ($H'$)
 $$H' = -\sum_{i=1}^{S} p_i \ln(p_i)$$
-di mana $p_i$ adalah proporsi relatif spesies ke-$i$. Nilai $H'$ yang tinggi menunjukkan komunitas yang tidak hanya memiliki banyak jenis spesies, melainkan kelimpahannya juga merata (tidak dimonopoli oleh satu spesies dominan saja).
+di mana $p_i$ adalah proporsi relatif takson ke-$i$. Nilai $H'$ yang tinggi menunjukkan komunitas yang tidak hanya memiliki banyak jenis takson, melainkan kelimpahannya juga merata (tidak dimonopoli oleh satu takson dominan saja).
+
+> [!TIP]
+> **💡 Analogi Sederhana (Dua Keranjang Buah)**: Keranjang A dan B sama-sama berisi **5 jenis buah** (*Richness* sama). Namun Keranjang A isinya 96 apel + 1 jeruk + 1 mangga + 1 pisang + 1 anggur, sedangkan Keranjang B isinya 20 masing-masing buah. Keranjang B jauh lebih merata (*Evenness* tinggi) $\rightarrow$ **Shannon Index-nya jauh lebih tinggi**!
 
 ---
 
@@ -92,6 +106,10 @@ Saat menguji apakah kelimpahan setiap spesies berbeda antar kedua kelompok, kita
 
 ## 6. Ringkasan Modul
 - Krona Plot merender hierarki taksonomi dari Domain hingga Spesies dalam diagram lingkaran interaktif.
-- Standardisasi kedalaman via Rarefaction wajib dilakukan sebelum membandingkan kekayaan spesies.
-- Alpha diversity mengukur keanekaragaman internal sampel, sedangkan Beta diversity (Bray–Curtis PCoA) memvisualisasikan pemisahan profil spesies antar-kelompok persalinan.
-- PERMANOVA dan koreksi FDR Benjamini–Hochberg memberikan landasan inferensi statistik yang kokoh untuk mengidentifikasi spesies yang berbeda bermakna antar-kelompok.
+- Standardisasi kedalaman via Rarefaction wajib dilakukan sebelum membandingkan kekayaan takson.
+- Alpha diversity mengukur keanekaragaman internal sampel, sedangkan Beta diversity (Bray–Curtis PCoA — bayangkan seperti **peta jarak antar-kota**) memvisualisasikan pemisahan profil mikrobioma antar-kelompok persalinan.
+- PERMANOVA dan koreksi FDR Benjamini–Hochberg memberikan landasan inferensi statistik yang kokoh agar kita tidak tertipu oleh temuan positif palsu akibat kebetulan acak.
+
+### ✅ Cek Paham Cepat (1 Menit)
+1. Jika dua sampel memiliki nilai **Bray–Curtis Dissimilarity = 0,05**, apakah komposisi mikrobioma keduanya sangat mirip atau sangat berbeda?
+2. Mengapa saat menguji 50 takson sekaligus kita wajib memakai nilai **$q$-value (FDR)**, bukan sekadar $p < 0,05$ mentah?
