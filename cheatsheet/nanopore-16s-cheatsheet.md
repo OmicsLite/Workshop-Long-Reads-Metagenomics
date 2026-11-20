@@ -120,3 +120,32 @@ Setiap baris file `.k2report` memiliki struktur 6 kolom terpisah tabulasi:
 4. **`rank`**: Tingkat taksonomi (`U`=Unclassified, `R`=Root, `D`=Domain, `P`=Phylum, `C`=Class, `O`=Order, `F`=Family, `G`=Genus, `S`=Species).
 5. **`taxid`**: ID Taksonomi (NCBI TaxID atau ID internal database referensi).
 6. **`name`**: Nama ilmiah takson (dengan indentasi spasi yang menunjukkan kedalaman hirarki).
+
+---
+
+## 6. Patokan Cepat Indeks Diversity (Alpha & Beta)
+
+| Indeks | Kategori | Rentang | Arah Baca |
+|---|---|---|---|
+| **Observed Genera** | Alpha (*Richness*) | `1 – ratusan` | Makin tinggi = makin banyak jenis |
+| **Pielou Evenness ($J'$)** | Alpha (*Evenness*) | `0 – 1` | Mendekati `1` = makin merata |
+| **Shannon ($H'$)** | Alpha (*Richness + Evenness*) | `0 – ~4+` | Makin tinggi = kaya & merata |
+| **Simpson ($1 - D$)** | Alpha (Dominansi terbalik) | `0 – 1` | Mendekati `1` = tidak dimonopoli 1 takson |
+| **Inverse Simpson ($1/D$)** | Alpha (*Effective taxa*) | `1 – S` | Jumlah efektif genus dominan yang merata |
+| **Bray–Curtis** | Beta (berbasis kelimpahan %) | `0 – 1` | `0` = identik; `1` = berbeda total |
+| **Jaccard** | Beta (ada / tidak ada) | `0 – 1` | `0` = daftar genus sama; `1` = berbeda total |
+
+---
+
+## 7. Struktur Folder Output Notebook (`results/`)
+
+```text
+results/
+├── 01_qc/                      # SeqKit stats, qc_summary.tsv, NanoPlot HTML
+├── 02_classification/          # classification_summary.tsv, reports/, per_read/
+├── 03_abundance/               # tables/ (Genus, Spesies, LCA depth) & figures/
+├── 04_krona/                   # html/ (Krona interaktif) & tsv/
+├── 05_diversity/               # alpha/ (5 indeks + boxplot) & beta/ (Bray-Curtis, Jaccard, PCoA, PERMANOVA)
+├── 06_differential_abundance/  # genus_group_tests.tsv (BH-FDR) & species_group_summary.tsv
+└── run_manifest.json           # Jejak audit parameter, timestamp, & SHA-256 database
+```

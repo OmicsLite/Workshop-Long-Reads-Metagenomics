@@ -73,9 +73,6 @@ nanopore-16s-workshop/
 │   ├── MetadataPublish.xlsx           # Berkas suplemen asli Angell et al. (2020) [CC BY 4.0]
 │   └── expected_outputs/              # Contoh tabel hasil ringkas untuk validasi mandiri peserta
 │
-├── instructor/                        # 👨‍🏫 Panduan khusus pengajar & fasilitator
-│   └── facilitator-guide.md           # Rencana pengajaran, alokasi waktu, & kunci diskusi
-│
 ├── cheatsheet/                        # 📄 Lembar contekan baris perintah (CLI)
 │   └── nanopore-16s-cheatsheet.md     # Command line terverifikasi (SeqKit, Chopper, Kraken2, Krona)
 │

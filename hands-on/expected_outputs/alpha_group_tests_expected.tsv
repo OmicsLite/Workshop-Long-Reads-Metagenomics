@@ -1,4 +1,6 @@
 metric	median_vaginal	median_sesar	U	p_value
-Observed genera	24.000	18.500	28.000	0.1797
-Shannon	2.145	1.682	29.000	0.1320
-Simpson (1-D)	0.825	0.710	27.000	0.2403
+Observed genera	31.0000	29.0000	18.0	1.0000
+Pielou evenness (J')	0.4975	0.4567	21.0	0.6991
+Shannon (H')	1.7547	1.4833	19.0	0.9372
+Simpson (1-D)	0.7459	0.7050	21.0	0.6991
+Inverse Simpson (1/D)	3.9697	3.3900	21.0	0.6991
