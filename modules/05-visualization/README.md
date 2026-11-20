@@ -51,51 +51,60 @@ Untuk membandingkan kekayaan takson secara adil, kita melakukan **Rarefaction**:
 
 ---
 
-## 3. Alpha Diversity: Mengukur Keragaman Spesies di Dalam Sampel
+## 3. Alpha Diversity: Mengukur Keragaman di Dalam Satu Sampel
 
-Alpha diversity mengukur keanekaragaman komunitas mikroba pada satu ekosistem sampel:
+Alpha diversity mengukur keanekaragaman komunitas mikroba pada satu ekosistem sampel menggunakan **5 indeks yang semuanya searah** (makin tinggi angka = makin beragam/merata):
 
 ```mermaid
 flowchart LR
-    A["Alpha Diversity (Spesies)"] --> B["Observed Species (Richness)<br/>Jumlah spesies unik yang terdeteksi"]
-    A --> C["Shannon Index (H')<br/>Menggabungkan Richness & Evenness (kemerataan)"]
-    A --> D["Simpson Diversity (1 - D)<br/>Probabilitas dua read acak berasal dari spesies berbeda"]
+    A["Alpha Diversity (Genus)"] --> B["Observed Genera<br/>Kekayaan murni (Richness)"]
+    A --> C["Pielou Evenness (J')<br/>Kemerataan murni (0–1)"]
+    A --> D["Shannon Index (H')<br/>Gabungan Richness & Evenness"]
+    A --> E["Simpson (1 - D)<br/>Peka terhadap takson dominan"]
+    A --> F["Inverse Simpson (1 / D)<br/>Jumlah efektif genus dominan"]
 ```
 
-### Rumus Matematis Shannon Index ($H'$)
-$$H' = -\sum_{i=1}^{S} p_i \ln(p_i)$$
-di mana $p_i$ adalah proporsi relatif takson ke-$i$. Nilai $H'$ yang tinggi menunjukkan komunitas yang tidak hanya memiliki banyak jenis takson, melainkan kelimpahannya juga merata (tidak dimonopoli oleh satu takson dominan saja).
+### Rumus Matematis Kunci
+$$H' = -\sum_{i=1}^{S} p_i \ln(p_i) \qquad J' = \frac{H'}{\ln(S)} \qquad \text{Inverse Simpson} = \frac{1}{\sum_{i=1}^{S} p_i^2}$$
+di mana $p_i$ adalah proporsi relatif takson ke-$i$ dan $S$ adalah jumlah takson unik (*Observed*).
 
 > [!TIP]
-> **💡 Analogi Sederhana (Dua Keranjang Buah)**: Keranjang A dan B sama-sama berisi **5 jenis buah** (*Richness* sama). Namun Keranjang A isinya 96 apel + 1 jeruk + 1 mangga + 1 pisang + 1 anggur, sedangkan Keranjang B isinya 20 masing-masing buah. Keranjang B jauh lebih merata (*Evenness* tinggi) $\rightarrow$ **Shannon Index-nya jauh lebih tinggi**!
+> **💡 Analogi Sederhana (Dua Keranjang Buah)**: Keranjang A dan B sama-sama berisi **5 jenis buah** (*Observed* = 5). Namun Keranjang A isinya 96 apel + 1 jeruk + 1 mangga + 1 pisang + 1 anggur (*Pielou* rendah $\rightarrow$ monopoli), sedangkan Keranjang B isinya 20 masing-masing buah (*Pielou* = 1,0 dan *Inverse Simpson* = 5,0)!
 
-### 📏 *Rule of Thumb* & Arah Indeks Alpha Diversity
-| Indeks | Rentang | Jika Tinggi | Jika Rendah | Catatan Penting |
+### 📏 *Rule of Thumb* & Justifikasi 5 Indeks Alpha Diversity
+| Indeks | Rentang | Jika Tinggi | Jika Rendah | Justifikasi Ilmiah |
 |---|---|---|---|---|
-| **Observed Taxa** | `1 – ratusan` | Banyak jenis berbeda hadir | Sedikit jenis terdeteksi | Bayi 3 bulan wajar 15–40 genus (dewasa 80–150+) |
-| **Shannon ($H'$)** | `0 – ~4+` | Kaya jenis **dan** merata (`> 2,5` sangat tinggi) | Miskin jenis **atau** dimonopoli 1–2 takson (`< 1,0`) | Menggabungkan *Richness* + *Evenness* |
-| **Simpson ($1-D$)** | `0 – 1` | Mendekati `1`: merata & tidak ada monopoli | Mendekati `0`: didominasi 1 takson | **Waspada kebalikannya**: `Simpson D` (dominansi) berlawanan arah dengan `1-D` & `Shannon`! |
+| **Observed Genera** | `1 – ratusan` | Banyak jenis berbeda hadir (bayi 3 bln wajar 15–40; dewasa 80–150+) | Sedikit jenis terdeteksi | Kekayaan murni (*Richness*) |
+| **Pielou Evenness ($J'$)** | `0 – 1` | Mendekati `1`: porsi antar-bakteri sangat merata | Mendekati `0`: 1–2 bakteri memonopoli sampel | Kemerataan murni (*Evenness*) terpisah dari jumlah jenis |
+| **Shannon ($H'$)** | `0 – ~4+` | Kaya jenis **dan** merata (`> 2,5` tinggi; `1–2` moderat/bayi) | Miskin jenis **atau** dimonopoli 1–2 takson (`< 1,0`) | Standar paling populer di jurnal klinis |
+| **Simpson ($1-D$)** | `0 – 1` | Mendekati `1` (`0,7–0,9`): tidak ada monopoli | Mendekati `0` (`< 0,4`): didominasi 1 takson | Peka bakteri dominan (*awas di jurnal: `Simpson D` berlawanan arah!*) |
+| **Inverse Simpson ($1/D$)** | `1 – S` | Makin besar = makin banyak genus dominan setara | Mendekati `1`: hanya 1 genus dominan | Tidak cepat jenuh di 0,99 & punya arti fisik langsung (*effective number of taxa*) |
 
 > [!NOTE]
+> **Kenapa `Chao1` & `Faith's PD` tidak kita paksakan di sini?** `Chao1` mengandalkan jumlah *singleton* (takson dengan tepat 1 read), sedangkan kita sudah memfilter *noise* `< 10` read di matriks Genus sehingga *singleton*-nya nol. Adapun `Faith's PD` membutuhkan pohon filogenetik dari *multiple sequence alignment*, yang tidak dihasilkan oleh klasifikasi $k$-mer `Kraken2`.
+>
 > **Hati-hati Mitos "Makin Tinggi Makin Sehat"**: Pada bayi ASI usia 3 bulan, Alpha Diversity yang rendah–moderat justru sering **fisiologis & sehat** karena usus idealnya didominasi *Bifidobacterium* (sama halnya dengan mikrobioma vagina sehat yang didominasi *Lactobacillus*). Selain itu, dua kelompok bisa memiliki **Alpha Diversity sama**, namun **Beta Diversity berbeda jauh** jika jenis bakterinya berlainan total!
 
 ---
 
-## 4. Beta Diversity: Perbandingan Komposisi Spesies Antar-Kelompok
+## 4. Beta Diversity: Perbandingan Komposisi Antar-Kelompok
 
 Beta diversity mengukur tingkat ketidaksamaan (*dissimilarity*) struktur komunitas antar-sampel atau antar-kelompok perlakuan klinis.
 
-### A. Bray–Curtis Dissimilarity
-Metrik ketidaksamaan yang mengukur perbedaan kelimpahan spesies antara dua sampel ($j$ dan $k$):
+### A. Bray–Curtis (Kelimpahan %) vs Jaccard (Ada / Tidak Ada)
+1. **Bray–Curtis Dissimilarity** — memperhitungkan **proporsi/kelimpahan** tiap takson antara dua sampel ($j$ dan $k$):
 
 $$BC_{jk} = \frac{\sum_{i} |C_{ij} - C_{ik}|}{\sum_{i} (C_{ij} + C_{ik})}$$
 
-* Nilai **0**: Kedua sampel memiliki komposisi dan kelimpahan spesies yang identik persis.
-* Nilai **1**: Kedua sampel tidak berbagi satu pun spesies yang sama (*completely disjoint*).
+2. **Jaccard Dissimilarity** — hanya melihat **ada atau tidak adanya (*presence/absence*)** takson, memberi bobot setara pada bakteri langka maupun dominan.
+
+* Nilai **0**: Kedua sampel identik persis.
+* Nilai **1**: Kedua sampel sama sekali tidak berbagi satu pun takson (*completely disjoint*).
+* **Kenapa menghitung keduanya?** Jika **Bray–Curtis tinggi tetapi Jaccard rendah**, artinya daftar jenis bakterinya sebenarnya banyak yang sama, tetapi **porsi (%) bakteri dominannya berubah drastis**! *(Catatan untuk pembaca jurnal: metrik **Weighted / Unweighted UniFrac** memiliki prinsip serupa, namun menambahkan jarak evolusi dari pohon filogenetik).*
 
 ### B. Principal Coordinates Analysis (PCoA)
 PCoA adalah teknik reduksi dimensi (*ordination*) yang memproyeksikan matriks jarak Bray–Curtis ke dalam ruang 2 dimensi (PCoA1 dan PCoA2):
-- Sampel yang posisinya berdekatan pada plot memiliki komunitas spesies yang mirip.
+- Sampel yang posisinya berdekatan pada plot memiliki komunitas mikroba yang mirip.
 - Persentase pada sumbu menunjukkan proporsi variasi data yang dapat dijelaskan oleh sumbu koordinat tersebut.
 
 ---
@@ -103,14 +112,14 @@ PCoA adalah teknik reduksi dimensi (*ordination*) yang memproyeksikan matriks ja
 ## 5. Uji Statistik Komparatif: PERMANOVA & Koreksi Benjamini–Hochberg (FDR)
 
 ### A. PERMANOVA (Permutational Multivariate Analysis of Variance)
-Untuk menguji secara formal apakah kelompok bayi persalinan **Vaginal** memiliki struktur komunitas spesies usus yang berbeda signifikan secara statistik dari kelompok **Sesar**:
+Untuk menguji secara formal apakah kelompok bayi persalinan **Vaginal** memiliki struktur komunitas usus yang berbeda signifikan secara statistik dari kelompok **Sesar** (baik pada jarak Bray–Curtis maupun Jaccard):
 - PERMANOVA menghitung rasio variansi antar-kelompok terhadap variansi di dalam kelompok (nilai **Pseudo-$F$**).
 - Nilai signifikansi ($p$-value) diperoleh bukan dari asumsi distribusi normal, melainkan dengan mengacak label sampel (*permutation test*, 999 kali permutasi).
 
-### B. Koreksi Benjamini–Hochberg untuk Pengujian Spesies Ganda
-Saat menguji apakah kelimpahan setiap spesies berbeda antar kedua kelompok, kita melakukan uji statistik independen (Mann–Whitney U) pada puluhan hingga ratusan spesies secara bersamaan.
-- Jika kita menguji 50 spesies dengan ambang $\alpha = 0.05$, kita diekspektasikan mendapatkan temuan positif palsu (*false discovery*) murni karena kebetulan acak.
-- **Koreksi Benjamini–Hochberg (BH)** mengontrol *False Discovery Rate* (FDR), mengubah $p$-value menjadi **$q$-value**. Spesies dianggap berbeda bermakna jika nilai $q < 0.05$.
+### B. Koreksi Benjamini–Hochberg untuk Pengujian Takson Ganda
+Saat menguji apakah kelimpahan setiap genus/takson berbeda antar kedua kelompok, kita melakukan uji statistik independen (Mann–Whitney U) pada puluhan takson secara bersamaan.
+- Jika kita menguji 50 takson dengan ambang $\alpha = 0.05$, kita diekspektasikan mendapatkan temuan positif palsu (*false discovery*) murni karena kebetulan acak.
+- **Koreksi Benjamini–Hochberg (BH)** mengontrol *False Discovery Rate* (FDR), mengubah $p$-value menjadi **$q$-value**. Takson dianggap berbeda bermakna jika nilai $q < 0.05$.
 
 ---
 

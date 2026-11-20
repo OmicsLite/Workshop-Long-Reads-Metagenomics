@@ -55,6 +55,18 @@ Dalam alur kerja resmi Oxford Nanopore Technologies (EPI2ME Labs `wf-16s` dan `w
   - `taxo.k2d`: Nodus, relasi induk-anak, dan nama taksonomi NCBI.
   - `database1000mers.kmer_distrib`: Model distribusi k-mer 1.000 bp untuk panjang bacaan ~1 kb.
 
+### Pilihan Database 16S Lain untuk Kraken2 (Riset Mandiri)
+Selain `ncbi_16s_18s`, beberapa alternatif indeks 16S yang umum dipakai bersama `Kraken2` antara lain:
+
+| Database | Perkiraan Ukuran | Keunggulan Utama | Kapan Cocok Dipakai? |
+|---|---|---|---|
+| **NCBI Targeted Loci 16S/18S** *(dipakai di sini)* | ~8,6 MB | Sangat ringan, taksonomi NCBI hingga Spesies (`S`), resmi ONT EPI2ME | Workshop Colab & eksplorasi dual-rank cepat |
+| **SILVA 138 / 138.1** | ~112–297 MB | Cakupan bakteri klinis & lingkungan sangat luas | Profil tingkat **Genus** pada sampel klinis/lingkungan |
+| **RDP** *(Ribosomal Database Project)* | ~20–30 MB | Kurasi ketat prokariota, ringan | Pembanding cepat tingkat **Genus** |
+| **Greengenes2** (`Greengenes2_plus` EPI2ME) | ~162 MB | Selaras dengan pohon genom utuh (*Web of Life*); populer di QIIME2 | Riset mikrobioma usus yang disandingkan dengan *shotgun* |
+
+*(Hindari memuat database shotgun besar seperti `Standard` ~70 GB pada Google Colab gratis ber-RAM 12 GB.)*
+
 ---
 
 ## 3. Evaluasi Kritis: Kapan Identifikasi Spesies 16S Dapat Dipercaya?
@@ -81,9 +93,11 @@ Hirarki Keyakinan Identifikasi:
 
 ---
 
-## 4. Peran Komplementer `Emu` (Expectation-Maximization)
+## 4. Alur `Kraken2 → Bracken` & Peran Komplementer `Emu`
 
-Bagi penelitian mikrobioma yang secara khusus membutuhkan profiling tingkat spesies dengan akurasi analitis tertinggi dari data bacaan panjang Nanopore, alat mutakhir yang direkomendasikan di literatur adalah **`Emu`** (Curry et al., 2022, *Nature Methods*):
+Di banyak pipeline metagenomik, `Kraken2` sering dipasangkan dengan **Bracken** (*Bayesian Reestimation of Abundance with Kraken*). Tugas Bracken adalah mengambil *read* yang tertahan di tingkat atas (Family/Genus) oleh LCA, lalu membaginya ulang secara probabilistik ke spesies di bawahnya memakai file `database1000mers.kmer_distrib`. Pada praktikum ini kita sengaja memakai laporan `Kraken2` langsung tanpa Bracken agar perilaku LCA tetap transparan dan tidak memperbesar *false positive* akibat error *indel* R9.4.1.
+
+Sementara itu, bagi penelitian mikrobioma yang secara khusus membutuhkan profiling tingkat spesies dengan akurasi tertinggi dari data bacaan panjang Nanopore, rujukan utamanya adalah **`Emu`** (Curry et al., 2022, *Nature Methods*):
 
 * **Prinsip Kerja Emu**: Menggunakan penjajaran *semi-global* `minimap2` terhadap database gabungan rrnDB + NCBI, kemudian memecahkan ambiguitas multi-mapping antarspesies dekat menggunakan algoritma iteratif *Expectation-Maximization* (EM).
 * **Perbandingan Praktis**:
