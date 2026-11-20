@@ -74,11 +74,13 @@ Selain `ncbi_16s_18s`, beberapa alternatif indeks 16S yang umum dipakai bersama 
 Meskipun laporan Kraken2 kini menampilkan baris bertanda **`S` (Species)** seperti *Bifidobacterium longum*, *Bacteroides fragilis*, atau *Escherichia coli*, peneliti dan klinisi wajib memahami batasan biologisnya:
 
 ```text
-Hirarki Keyakinan Identifikasi:
-[ Level Genus ]   --> Keyakinan Sangat Tinggi (Konservasi 16S memadai untuk genus)
-[ Level Spesies ] --> Keyakinan Moderat hingga Tinggi (Tergantung kompleksitas filogenetik takson)
-[ Level Galur ]   --> TIDAK BISA (Gen 16S rRNA tidak memiliki resolusi strain)
+Hirarki Keyakinan Identifikasi pada 16S rRNA Standar:
+[ Level Genus ]   --> Tinggi (>90% kasus klinis; batas kemiripan ~94,5%)
+[ Level Spesies ] --> Moderat hingga Tinggi (~65–83%; batas ~98,65%, bergantung klad takson & kualitas bacaan)
+[ Level Galur ]   --> Tidak Memadai untuk Strain Typing Rutin (membutuhkan analisis kopi operon akurasi tinggi atau WGS/shotgun)
 ```
+
+> **Landasan Pustaka**: Konsensus batas resolusi ini mengacu pada review diagnostik klinis **Janda & Abbott (2007)** (*J. Clin. Microbiol.*, [doi:10.1128/JCM.01228-07](https://doi.org/10.1128/JCM.01228-07); identifikasi >90% pada Genus vs ~65–83% pada Spesies), ambang batas kemiripan sekuens **Yarza et al. (2014)** (*Nat. Rev. Microbiol.*, [doi:10.1038/nrmicro3330](https://doi.org/10.1038/nrmicro3330); ~94,5% Genus) dan **Kim et al. (2014)** (*IJSEM*, [doi:10.1099/ijs.0.059774-0](https://doi.org/10.1099/ijs.0.059774-0); 98,65% Spesies), serta evaluasi resolusi spesies–galur *full-length* 16S oleh **Johnson et al. (2019)** (*Nat. Commun.*, [doi:10.1038/s41467-019-13036-1](https://doi.org/10.1038/s41467-019-13036-1)). Meski *full-length* 16S berakurasi sangat tinggi secara teori dapat membedakan sebagian galur lewat pola variasi antarkopi operon, pada alur *single-read* R9.4.1 + `Kraken2` maupun *strain typing* klinis (mis. virulensi/AMR yang berada di luar gen 16S), analisis galur tetap memerlukan **WGS atau *shotgun* metagenomics**.
 
 ### Empat Peringatan Ilmiah Penting:
 1. **Spesies Bersekuens 16S Identik**:
