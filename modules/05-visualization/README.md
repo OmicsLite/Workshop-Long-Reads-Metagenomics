@@ -69,6 +69,16 @@ di mana $p_i$ adalah proporsi relatif takson ke-$i$. Nilai $H'$ yang tinggi menu
 > [!TIP]
 > **💡 Analogi Sederhana (Dua Keranjang Buah)**: Keranjang A dan B sama-sama berisi **5 jenis buah** (*Richness* sama). Namun Keranjang A isinya 96 apel + 1 jeruk + 1 mangga + 1 pisang + 1 anggur, sedangkan Keranjang B isinya 20 masing-masing buah. Keranjang B jauh lebih merata (*Evenness* tinggi) $\rightarrow$ **Shannon Index-nya jauh lebih tinggi**!
 
+### 📏 *Rule of Thumb* & Arah Indeks Alpha Diversity
+| Indeks | Rentang | Jika Tinggi | Jika Rendah | Catatan Penting |
+|---|---|---|---|---|
+| **Observed Taxa** | `1 – ratusan` | Banyak jenis berbeda hadir | Sedikit jenis terdeteksi | Bayi 3 bulan wajar 15–40 genus (dewasa 80–150+) |
+| **Shannon ($H'$)** | `0 – ~4+` | Kaya jenis **dan** merata (`> 2,5` sangat tinggi) | Miskin jenis **atau** dimonopoli 1–2 takson (`< 1,0`) | Menggabungkan *Richness* + *Evenness* |
+| **Simpson ($1-D$)** | `0 – 1` | Mendekati `1`: merata & tidak ada monopoli | Mendekati `0`: didominasi 1 takson | **Waspada kebalikannya**: `Simpson D` (dominansi) berlawanan arah dengan `1-D` & `Shannon`! |
+
+> [!NOTE]
+> **Hati-hati Mitos "Makin Tinggi Makin Sehat"**: Pada bayi ASI usia 3 bulan, Alpha Diversity yang rendah–moderat justru sering **fisiologis & sehat** karena usus idealnya didominasi *Bifidobacterium* (sama halnya dengan mikrobioma vagina sehat yang didominasi *Lactobacillus*). Selain itu, dua kelompok bisa memiliki **Alpha Diversity sama**, namun **Beta Diversity berbeda jauh** jika jenis bakterinya berlainan total!
+
 ---
 
 ## 4. Beta Diversity: Perbandingan Komposisi Spesies Antar-Kelompok
