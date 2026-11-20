@@ -33,12 +33,12 @@ Jika sekumpulan $k$-mer sepanjang 35 bp ditemukan identik pada beberapa spesies 
 > [!TIP]
 > **💡 Analogi Sederhana (Detektif Kamus yang Jujur)**: Bayangkan Anda menemukan sobekan halaman bertuliskan *"berkaki empat, berkumis, suka ikan"*. Karena cocok dengan kucing kampung maupun kucing Persia, detektif yang jujur akan melapor: *"Ini keluarga Kucing (Genus)"*—bukan asal menebak rasnya! Itulah cara kerja **LCA** pada Kraken2.
 
-### Parameter Confidence Threshold (`--confidence 0.05`)
-Secara default, satu kecocokan $k$-mer minimizer saja sudah dapat melabeli suatu takson. Pada data Nanopore yang memiliki variasi error per-basa lebih tinggi, kita menerapkan:
+### Parameter Confidence Threshold (`--confidence 0.01`)
+Secara default (`0.0`), satu kecocokan $k$-mer minimizer saja sudah dapat melabeli suatu takson. Pada data Nanopore R9.4.1 (akurasi ~90%, peluang 35-mer bebas error $(0{,}90)^{35} \approx 2{,}5\%$), kita menerapkan ambang seimbang:
 ```bash
-kraken2 --db database_16s --confidence 0.05 --threads 2 --report sample.k2report input.fastq
+kraken2 --db database_16s --confidence 0.01 --threads 2 --report sample.k2report input.fastq
 ```
-Flag `--confidence 0.05` mensyaratkan minimal 5% dari seluruh $k$-mer informatif pada *read* tersebut harus konsisten mendukung cabang taksonomi terkait, secara efektif menyaring penugasan acak (*false positive assignments*).
+Flag `--confidence 0.01` mensyaratkan minimal 1% dari seluruh $k$-mer informatif pada *read* tersebut harus konsisten mendukung cabang taksonomi terkait—efektif menyaring penugasan acak (*false positive*) tanpa membuang sinyal biologis R9.4.1.
 
 ---
 

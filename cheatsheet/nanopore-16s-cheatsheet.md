@@ -54,13 +54,13 @@ seqkit seq -m 1000 -M 1700 -Q 10 raw_reads.fastq.gz -o filtered_reads.fastq.gz
 # Klasifikasi reads terhadap database resmi ONT EPI2ME NCBI Targeted Loci 16S/18S
 kraken2 --db database_16s \
         --threads 2 \
-        --confidence 0.05 \
+        --confidence 0.01 \
         --output sample.kraken.tsv \
         --report sample.k2report \
         filtered_reads.fastq.gz
 ```
 * `--db`: Path menuju direktori database referensi (memuat `hash.k2d`, `opts.k2d`, `taxo.k2d`).
-* `--confidence`: Ambang batas proporsi k-mer minimizer pendukung (0.05 = 5%).
+* `--confidence`: Ambang batas proporsi k-mer minimizer pendukung (`0.01` = 1%, optimal untuk data R9.4.1).
 * `--report`: Output laporan ringkasan taksonomi hirarkis (`.k2report`).
 
 ### Parsing Laporan Kraken2 Tingkat Spesies (`S`) & Genus (`G`)
