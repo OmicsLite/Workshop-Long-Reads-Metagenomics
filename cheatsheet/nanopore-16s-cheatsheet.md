@@ -86,7 +86,7 @@ bracken -d database_16s \
 * `-l S`: Tingkat taksonomi target (`S` untuk Spesies, `G` untuk Genus).
 * `-t 10`: Ambang batas deteksi minimum reads.
 
-### Emu (Standar Emas Lanjutan: Profil Tingkat Spesies via Expectation-Maximization)
+### Emu (Opsi Lanjutan Berbasis Alignment + Expectation-Maximization)
 ```bash
 # Menjalankan profil tingkat spesies menggunakan penjajaran minimap2 + algoritma EM
 emu abundance sample.fastq \

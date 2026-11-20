@@ -97,16 +97,17 @@ Hirarki Keyakinan Identifikasi:
 
 Di banyak pipeline metagenomik, `Kraken2` sering dipasangkan dengan **Bracken** (*Bayesian Reestimation of Abundance with Kraken*). Tugas Bracken adalah mengambil *read* yang tertahan di tingkat atas (Family/Genus) oleh LCA, lalu membaginya ulang secara probabilistik ke spesies di bawahnya memakai file `database1000mers.kmer_distrib`. Pada praktikum ini kita sengaja memakai laporan `Kraken2` langsung tanpa Bracken agar perilaku LCA tetap transparan dan tidak memperbesar *false positive* akibat error *indel* R9.4.1.
 
-Sementara itu, bagi penelitian mikrobioma yang secara khusus membutuhkan profiling tingkat spesies dengan akurasi tertinggi dari data bacaan panjang Nanopore, rujukan utamanya adalah **`Emu`** (Curry et al., 2022, *Nature Methods*):
+Sementara itu, untuk profil tingkat spesies pada bacaan panjang Nanopore, banyak pipeline riset menggunakan pendekatan berbasis *alignment* (penjajaran sekuens penuh) alih-alih *k-mer* semata—misalnya mode `minimap2` pada **ONT EPI2ME (`wf-16s`)** atau **`Emu`** (Curry et al., 2022, *Nature Methods*):
 
 * **Prinsip Kerja Emu**: Menggunakan penjajaran *semi-global* `minimap2` terhadap database gabungan rrnDB + NCBI, kemudian memecahkan ambiguitas multi-mapping antarspesies dekat menggunakan algoritma iteratif *Expectation-Maximization* (EM).
+* **Catatan Kritis**: Tidak ada satu "standar emas" tunggal di bioinformatika 16S Nanopore—performa `Emu`, `minimap2`, maupun `Kraken2/Bracken` sangat dipengaruhi oleh kimia *flow cell* (R9.4.1 vs R10.4.1 Q20+) serta kelengkapan database rujukannya.
 * **Perbandingan Praktis**:
 
 | Pendekatan | Kecepatan | Resolusi Utama | Cocok Digunakan Saat... |
 |---|---|---|---|
 | **Kraken2 + NCBI Targeted Loci** *(Alur Utama Workshop)* | Sangat cepat (<1 detik/sampel) | Genus (sangat kuat) & Spesies terarah (*putative*) | Eksplorasi cepat, workshop di Google Colab, screening awal |
 | **Kraken2 + Bracken (1.000 bp)** *(Pengayaan)* | Sangat cepat | Re-estimasi kelimpahan Bayesian ke tingkat Spesies/Genus | Ingin mendistribusikan ulang read LCA secara probabilistik (waspadai *over-assignment* pada R9.4.1) |
-| **Emu (`minimap2` + EM)** *(Standar Emas Riset)* | Sedang–Lambat (butuh RAM/CPU lebih besar) | Spesies akurasi tinggi (tahan error indel Nanopore) | Publikasi jurnal ilmiah & profil spesies mendalam di server lokal/HPC |
+| **Alignment + EM (`Emu` / `minimap2` `wf-16s`)** *(Opsi Lanjutan)* | Sedang–Lambat (butuh RAM/CPU lebih besar) | Spesies lebih selektif (meredam error *indel* & *false positive*) | Analisis mendalam tingkat spesies di server lokal/HPC dengan validasi database |
 
 ---
 
