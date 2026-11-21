@@ -99,7 +99,7 @@ Hirarki Keyakinan Identifikasi pada 16S rRNA Standar:
 
 Di banyak pipeline metagenomik, `Kraken2` sering dipasangkan dengan **Bracken** (*Bayesian Reestimation of Abundance with Kraken*). Tugas Bracken adalah mengambil *read* yang tertahan di tingkat atas (Family/Genus) oleh LCA, lalu membaginya ulang secara probabilistik ke spesies di bawahnya memakai file `database1000mers.kmer_distrib`. Pada praktikum ini kita sengaja memakai laporan `Kraken2` langsung tanpa Bracken agar perilaku LCA tetap transparan dan tidak memperbesar *false positive* akibat error *indel* R9.4.1.
 
-Sementara itu, untuk profil tingkat spesies pada bacaan panjang Nanopore, banyak pipeline riset menggunakan pendekatan berbasis *alignment* (penjajaran sekuens penuh) alih-alih *k-mer* semata—misalnya mode `minimap2` pada **ONT EPI2ME (`wf-16s`)** atau **`Emu`** (Curry et al., 2022, *Nature Methods*):
+Sementara itu, untuk profil tingkat spesies pada bacaan panjang Nanopore, banyak pipeline riset menggunakan pendekatan berbasis *alignment* (penjajaran sekuens penuh) alih-alih *k-mer* semata—misalnya mode `minimap2` pada **ONT EPI2ME (`wf-16s`)** atau **`Emu`** (Curry et al., 2022, *Nature Methods*, [doi:10.1038/s41592-022-01520-4](https://doi.org/10.1038/s41592-022-01520-4)):
 
 * **Prinsip Kerja Emu**: Menggunakan penjajaran *semi-global* `minimap2` terhadap database gabungan rrnDB + NCBI, kemudian memecahkan ambiguitas multi-mapping antarspesies dekat menggunakan algoritma iteratif *Expectation-Maximization* (EM).
 * **Catatan Kritis**: Tidak ada satu "standar emas" tunggal di bioinformatika 16S Nanopore—performa `Emu`, `minimap2`, maupun `Kraken2/Bracken` sangat dipengaruhi oleh kimia *flow cell* (R9.4.1 vs R10.4.1 Q20+) serta kelengkapan database rujukannya.

@@ -16,7 +16,7 @@ Setelah menyelesaikan modul ini, peserta mampu:
 
 ## 1. Nomenklatur Filum Bakteri Resmi: Pembaruan ICNP 2021
 
-Pada tahun 2021, *International Committee on Systematics of Prokaryotes* (ICSP) secara resmi memperbarui tata nama filum bakteri untuk menyelaraskan akhiran filum dengan aturan *International Code of Nomenclature of Prokaryotes* (ICNP) (Oren & Garrity, 2021):
+Pada tahun 2021, *International Committee on Systematics of Prokaryotes* (ICSP) secara resmi memperbarui tata nama filum bakteri untuk menyelaraskan akhiran filum dengan aturan *International Code of Nomenclature of Prokaryotes* (ICNP) (Oren & Garrity, 2021, *IJSEM*, [doi:10.1099/ijsem.0.005056](https://doi.org/10.1099/ijsem.0.005056)):
 
 | Nama Filum Historis (Literatur Lama & Basis Data Klasik) | Nama Filum Resmi ICNP 2021 (Standar Publikasi Terkini) | Genus Representatif Penting |
 |---|---|---|
@@ -35,7 +35,7 @@ Pada tahun 2021, *International Committee on Systematics of Prokaryotes* (ICSP) 
 Rasio *Firmicutes/Bacteroidetes* (atau *Bacillota/Bacteroidota*) awalnya dipopulerkan pada tahun 2005–2006 dari eksperimen mencit model obesitas. Namun, konsensus sains mikrobioma manusia modern telah mengkritisi keras generalisasi ini:
 
 ### Mengapa Rasio F/B Tidak Layak Sebagai Biomarker Klinis Universal?
-1. **Ketidakkonsistenan Lintas Kohort Manusia**: Meta-analisis skala besar terhadap ribuan subjek manusia di berbagai negara menunjukkan bahwa hubungan antara rasio F/B dan indeks massa tubuh (BMI) seringkali tidak signifikan, dan pada beberapa populasi bahkan berlawanan arah (Magne et al., 2020).
+1. **Ketidakkonsistenan Lintas Kohort Manusia**: Tinjauan kritis terhadap berbagai studi kohort manusia menunjukkan bahwa hubungan antara rasio F/B dan indeks massa tubuh (BMI) sering kali tidak konsisten atau tidak signifikan akibat faktor perancu diet, usia, dan variasi metode (Magne et al., 2020, *Nutrients*, [doi:10.3390/nu12051474](https://doi.org/10.3390/nu12051474)).
 2. **Kelemahan Generalisasi di Tingkat Filum (*Lumping Problem*)**: Filum *Bacillota* mencakup ribuan spesies dengan fungsi metabolisme yang bertolak belakang. Menyatukan bakteri anti-inflamasi penghasil butirat (*Faecalibacterium prausnitzii*) dengan bakteri patogen oportunistik (*Clostridioides difficile*) ke dalam satu angka rasio filum mengaburkan informasi biologis penting.
 3. **Konteks Mikrobioma Bayi (Dataset Kita)**: Pada feses bayi usia 3 bulan (dataset PRJNA637202), ekosistem usus belum matang dan secara alami didominasi oleh filum *Actinomycetota* (khususnya genus *Bifidobacterium*) yang memetabolisme oligosakarida susu ibu (HMO). Menghitung rasio F/B pada bayi usia dini tidak relevan secara fisiologis!
 

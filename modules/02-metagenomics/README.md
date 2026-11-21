@@ -15,7 +15,7 @@ Setelah menyelesaikan modul ini, peserta mampu:
 
 ## 1. 16S rRNA Amplicon Sequencing vs Shotgun Metagenomics
 
-Sering terjadi kerancuan istilah di literatur di mana sekuensing amplikon 16S disebut sebagai "16S Metagenomics". Dalam terminologi ilmiah yang tepat (Marchesi & Ravel, 2015):
+Sering terjadi kerancuan istilah di literatur di mana sekuensing amplikon 16S disebut sebagai "16S Metagenomics". Dalam terminologi ilmiah yang tepat (Marchesi & Ravel, 2015, *Microbiome*, [doi:10.1186/s40168-015-0094-5](https://doi.org/10.1186/s40168-015-0094-5)):
 
 ```mermaid
 flowchart TD

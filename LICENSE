@@ -47,7 +47,7 @@ Under the following terms:
 ## 3. Dataset Attribution
 
 The benchmark sequencing metadata (`hands-on/MetadataPublish.xlsx`) originates from:
-> Angell, I. L., Nilsen, M., Lødrup Carlsen, K. C., Carlsen, K.-H., Hedlin, G., Jonassen, C. M., Marsland, B., Nordlund, B., Rehbinder, E. M., Saunders, C. M., Skjerven, H. O., Staff, A. C., Söderhäll, C., Vettukattil, R., & Rudi, K. (2020). *De novo species identification using 16S rRNA gene nanopore sequencing*. **PeerJ**, 8, e10029. https://doi.org/10.7717/peerj.10029
+> Angell, I. L., Nilsen, M., Lødrup Carlsen, K. C., Carlsen, K.-H., Hedlin, G., Jonassen, C. M., Marsland, B., Nordlund, B., Rehbinder, E. M., Saunders, C., Skjerven, H. O., Staff, A. C., Söderhäll, C., Vettukattil, R., & Rudi, K. (2020). *De novo species identification using 16S rRNA gene nanopore sequencing*. **PeerJ**, 8, e10029. https://doi.org/10.7717/peerj.10029
 
 The original dataset is licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
 
