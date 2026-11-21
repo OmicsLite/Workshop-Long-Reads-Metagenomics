@@ -77,7 +77,7 @@ Sekuensing Nanopore memiliki kelemahan historis pada daerah **homopolimer** (ren
 
 ### Konsekuensi Bioinformatika:
 1. **Kegagalan Algoritma ASV Konvensional (Short-Read)**: Algoritma seperti DADA2 standar atau Deblur mengasumsikan error sekuensing bersifat substitusi independen berfrekuensi rendah. Pada data Nanopore R9.4.1, indel membuat hampir setiap *read* tampak unik, sehingga pendekatan ASV konvensional memecah kelimpahan menjadi ribuan varian palsu.
-2. **Kebutuhan Metode Berbasis Resiliensi Indel**: Oleh sebab itu, analisis 16S Nanopore mengandalkan klasifikasi *minimizer* $k$-mer (`Kraken2` + database NCBI Targeted Loci untuk profil genus & spesies), atau penjajaran probabilistik (*alignment-based Expectation-Maximization* seperti **`Emu`**) yang memodelkan profil error Nanopore untuk akurasi spesies yang lebih tinggi.
+2. **Kebutuhan Metode Berbasis Resiliensi Indel**: Oleh sebab itu, analisis 16S Nanopore mengandalkan klasifikasi *minimizer* $k$-mer (`Kraken2` + database NCBI Targeted Loci untuk profil genus & spesies cepat), atau pendekatan berbasis *alignment* seperti mode `minimap2` pada ONT EPI2ME (`wf-16s`) maupun **`Emu`** (*alignment* + *Expectation-Maximization*) untuk meredam error bacaan panjang.
 
 ---
 

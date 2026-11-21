@@ -61,7 +61,7 @@ Mengapa pada alur praktikum primer ini kita memprioritaskan analisis hitungan cl
 * (D) Karena Bracken membutuhkan GPU berkekuatan tinggi
 
 ### Soal 9
-Jika seorang peneliti ingin melakukan profiling taksonomi hingga tingkat SPESIES secara akurat dari data sekuensing amplikon 16S Nanopore, perangkat lunak apakah yang saat ini menjadi standar emas berbasis Expectation-Maximization?
+Jika seorang peneliti ingin melengkapi hasil *k-mer* `Kraken2` dengan perangkat lunak khusus 16S bacaan panjang yang menggabungkan penjajaran `minimap2` dan algoritma *Expectation-Maximization* (EM) untuk meredam error indel Nanopore, alat manakah yang paling tepat?
 * (A) Emu (Curry et al., 2022)
 * (B) BWA-MEM
 * (C) FastQC

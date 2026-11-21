@@ -22,31 +22,29 @@ Dokumen ini berisi daftar masalah teknis aktual yang mungkin dihadapi peserta se
 
 ---
 
-## 🌐 Masalah 2: Pengunduhan FASTQ dari FTP ENA Gagal atau Terhenti (*Connection Timeout*)
+## 🌐 Masalah 2: Pengunduhan FASTQ Gagal atau Terhenti (*Connection Timeout*)
 
-* **Gejala**: Perintah `wget` pada Sel 2.1 terhenti sangat lama atau menampilkan pesan `Connection timed out` saat mengunduh data dari `ftp.sra.ebi.ac.uk`.
-* **Penyebab**: Server FTP ENA di Eropa kadang membatasi jumlah koneksi simultan ketika puluhan peserta mengeksekusi pengunduhan pada saat yang bersamaan, atau jaringan kampus/instansi memblokir protokol FTP port 21.
+* **Gejala**: Pengunduhan 12 file FASTQ pada Sel 2.1 berjalan lambat atau menampilkan peringatan kegagalan koneksi (*Connection timed out* / ukuran byte tidak cocok).
+* **Penyebab**: Server ENA di Eropa kadang membatasi koneksi simultan saat puluhan peserta mengunduh bersamaan, atau jaringan kampus/instansi mengalami lonjakan trafik.
 * **Solusi**:
-  1. `wget` pada skrip notebook sudah dilengkapi dengan flag `--continue --tries=3 --timeout=30` untuk mencoba mengulang koneksi secara otomatis.
-  2. Jika koneksi ENA tetap gagal, gunakan **jalur cadangan (*fallback mirror*)** dengan beralih ke protokol HTTPS langsung:
-     ```python
-     # Ganti url ftp:// menjadi https:// pada manifest
-     samples["url"] = samples["url"].str.replace("ftp://", "https://")
-     ```
-  3. Instruktur juga menyediakan arsip data ringkas di Google Drive / GitHub Releases yang dapat diunduh sekali jalan.
+  1. Sel 2.1 sudah dilengkapi **pengunduh 2 lapis otomatis**:
+     - **Lapis 1 (Utama)**: Mengunduh 1 arsip ringkas `prjna637202_12samples_raw.tar.gz` (~490 MB) langsung dari **GitHub Releases** (`v1.0-workshop-data`), biasanya selesai dalam ~10–20 detik di server Colab.
+     - **Lapis 2 (*Fallback* Otomatis)**: Jika GitHub Release tidak dapat diakses, skrip otomatis mengunduh per sampel melalui **HTTPS paralel (4 koneksi bersamaan)** dari ENA dengan flag `--continue --tries=5 --timeout=45` serta verifikasi ukuran byte eksak.
+  2. Jika satu file gagal di tengah jalan, cukup **jalankan ulang Sel 2.1** — file yang sudah utuh akan otomatis dilewati (*ready*) dan hanya file yang belum lengkap yang dilanjutkan.
 
 ---
 
 ## 📊 Masalah 3: Visualisasi Krona Plot atau NanoPlot Tidak Tampil (Layar Putih Kosong)
 
-* **Gejala**: Sel visualisasi `display(HTML(filename=...))` dieksekusi tanpa pesan error, tetapi jendela keluaran di bawah sel hanya menampilkan kotak kosong atau layar putih.
-* **Penyebab**: Kebijakan keamanan isolasi (*iframe sandboxing*) pada peramban web modern (Google Chrome, Brave, atau Safari) sering memblokir eksekusi skrip JavaScript interaktif di dalam *iframe* notebook Colab.
+* **Gejala**: Sel visualisasi NanoPlot (Sel 3.1) atau *iframe* Krona Plot (Sel 6.2) selesai tanpa error, tetapi kotak keluaran hanya menampilkan layar putih atau tidak bisa diklik.
+* **Penyebab**: Kebijakan keamanan isolasi (*iframe sandboxing*) pada beberapa peramban web (Safari/Brave/Chrome dengan ekstensi pemblokir skrip) dapat membatasi eksekusi JavaScript interaktif di dalam notebook Colab.
 * **Solusi**:
-  1. Hal ini tidak berarti analisis Anda gagal! File laporan HTML interaktif telah berhasil diproduksi di direktori `results/`.
+  1. Hal ini tidak berarti analisis Anda gagal! Seluruh file HTML interaktif telah tersimpan rapi di folder `results/`.
   2. Buka panel berkas di sebelah kiri Google Colab (ikon folder).
-  3. Masuk ke folder `16s_workshop/results/`.
-  4. Klik kanan pada file laporan (misal `V01_NanoPlot-report.html` atau `SRR11923954.krona.html`), lalu pilih **Download**.
-  5. Buka berkas `.html` yang telah terunduh langsung di peramban web laptop Anda untuk menjelajahi grafik secara interaktif dengan lancar.
+  3. Arahkan ke subfolder yang sesuai:
+     - Laporan NanoPlot: `16s_workshop/results/01_qc/V01_NanoPlot-report.html`
+     - Diagram Krona: `16s_workshop/results/04_krona/html/SRR11923954.krona.html` (atau file sampel lain).
+  4. Klik kanan pada file `.html` tersebut, pilih **Download**, lalu buka langsung di tab browser laptop Anda untuk eksplorasi interaktif penuh.
 
 ---
 
