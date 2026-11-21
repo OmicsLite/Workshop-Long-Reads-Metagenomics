@@ -24,11 +24,11 @@ Dokumen ini berisi daftar masalah teknis aktual yang mungkin dihadapi peserta se
 
 ## 🌐 Masalah 2: Pengunduhan FASTQ Gagal atau Terhenti (*Connection Timeout*)
 
-* **Gejala**: Pengunduhan 12 file FASTQ pada Sel 2.1 berjalan lambat atau menampilkan peringatan kegagalan koneksi (*Connection timed out* / ukuran byte tidak cocok).
+* **Gejala**: Pengunduhan 38 file FASTQ pada Sel 2.1 berjalan lambat atau menampilkan peringatan kegagalan koneksi (*Connection timed out* / ukuran byte tidak cocok).
 * **Penyebab**: Server ENA di Eropa kadang membatasi koneksi simultan saat puluhan peserta mengunduh bersamaan, atau jaringan kampus/instansi mengalami lonjakan trafik.
 * **Solusi**:
   1. Sel 2.1 sudah dilengkapi **pengunduh 2 lapis otomatis**:
-     - **Lapis 1 (Utama)**: Mengunduh 1 arsip ringkas `prjna637202_12samples_raw.tar.gz` (≈490 MB) langsung dari **GitHub Releases** (`v1.0-workshop-data`), biasanya selesai dalam ≈10–20 detik di server Colab.
+     - **Lapis 1 (Utama)**: Mengunduh 1 arsip ringkas `prjna637202_38samples_raw.tar.gz` (≈1,4 GB) langsung dari **GitHub Releases** (`v1.1-workshop-data-38`), biasanya selesai dalam ≈30–45 detik di server Colab.
      - **Lapis 2 (*Fallback* Otomatis)**: Jika GitHub Release tidak dapat diakses, skrip otomatis mengunduh per sampel melalui **HTTPS paralel (4 koneksi bersamaan)** dari ENA dengan flag `--continue --tries=5 --timeout=45` serta verifikasi ukuran byte eksak.
   2. Jika satu file gagal di tengah jalan, cukup **jalankan ulang Sel 2.1** — file yang sudah utuh akan otomatis dilewati (*ready*) dan hanya file yang belum lengkap yang dilanjutkan.
 

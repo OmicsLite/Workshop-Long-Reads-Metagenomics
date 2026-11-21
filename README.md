@@ -41,7 +41,7 @@ Praktikum *hands-on* menggunakan dataset publik nyata yang telah ter-deidentifik
 * **Sumber Data**: BioProject NCBI **[PRJNA637202](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA637202)** (European Nucleotide Archive).
 * **Publikasi Asal**: Angell, I. L., et al. (2020). *"De novo species identification using 16S rRNA gene nanopore sequencing."* *PeerJ*, 8, e10029. DOI: [10.7717/peerj.10029](https://doi.org/10.7717/peerj.10029).
 * **Karakteristik Sampel**: Kohort feses bayi usia 3 bulan (*PreventADALL Study*), menargetkan wilayah gen 16S rRNA **V3–V9** (≈1.140 bp) yang disekuensing dengan MinION (kimia R9.4.1).
-* **Desain Eksperimen**: Subset berimbang 12 sampel ($n=6$ persalinan **Vaginal** vs $n=6$ persalinan **Sesar**) yang dipetakan langsung dari berkas metadata klinis terbuka [`MetadataPublish.xlsx`](hands-on/MetadataPublish.xlsx) dan manifest [`sample_manifest.tsv`](hands-on/sample_manifest.tsv).
+* **Desain Eksperimen**: Subset berimbang **38 sampel** ($n=19$ persalinan **Vaginal** vs $n=19$ persalinan **Sesar**) yang dipetakan langsung dari berkas metadata klinis terbuka [`MetadataPublish.xlsx`](hands-on/MetadataPublish.xlsx) dan manifest [`sample_manifest.tsv`](hands-on/sample_manifest.tsv).
 
 ---
 
@@ -69,7 +69,7 @@ nanopore-16s-workshop/
 │
 ├── hands-on/                          # 🔬 Berkas praktikum interaktif
 │   ├── gut_microbiome_16s.ipynb       # Notebook utama Google Colab (Chopper + Kraken2 + Diversity)
-│   ├── sample_manifest.tsv            # Manifest 12 sampel terstruktur (Vaginal vs Sesar)
+│   ├── sample_manifest.tsv            # Manifest 38 sampel terstruktur (19 Vaginal vs 19 Sesar)
 │   ├── MetadataPublish.xlsx           # Berkas suplemen asli Angell et al. (2020) [CC BY 4.0]
 │   └── expected_outputs/              # Contoh tabel hasil ringkas untuk validasi mandiri peserta
 │

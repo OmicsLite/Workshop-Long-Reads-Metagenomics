@@ -10,7 +10,7 @@ Setelah menyelesaikan modul ini, peserta mampu:
 6. Menetapkan batasan etis antara analisis mikrobioma untuk **pendidikan/penelitian eksploratif** dengan **diagnostik klinis terakreditasi**.
 
 > [!TIP]
-> **⚡ Inti dalam 30 Detik**: Modul ini adalah **"rem pengaman ilmiah"** bagi klinisi & peneliti. Ingat 3 aturan emas: (1) **Persentase naik $\neq$ bakteri bertambah banyak** (sifat komposisional); (2) **Ada DNA bakteri $\neq$ bakteri hidup $\neq$ infeksi klinis**; dan (3) **Asosiasi di 12 sampel $\neq$ sebab-akibat maupun diagnosis pasien**.
+> **⚡ Inti dalam 30 Detik**: Modul ini adalah **"rem pengaman ilmiah"** bagi klinisi & peneliti. Ingat 3 aturan emas: (1) **Persentase naik $\neq$ bakteri bertambah banyak** (sifat komposisional); (2) **Ada DNA bakteri $\neq$ bakteri hidup $\neq$ infeksi klinis**; dan (3) **Asosiasi di 38 sampel $\neq$ sebab-akibat maupun diagnosis pasien**.
 
 ---
 
@@ -99,9 +99,9 @@ flowchart LR
 
 Saat menuliskan laporan atau naskah publikasi, gunakan pola 4 langkah:
 
-1. **Observasi**: *"Berdasarkan profil taksonomi (genus & spesies) dari 12 sampel feses bayi usia 3 bulan..."*
-2. **Angka Objektif**: *"Median kelimpahan relatif genus Bacteroides (termasuk spesies terarah B. fragilis) terukur jauh lebih tinggi pada kelompok persalinan vaginal dibandingkan kelompok sesar (Mann–Whitney U, p = ..., q = ...)..."*
-3. **Ketidakpastian & Faktor Perancu**: *"Namun demikian, ukuran sampel pada demonstrasi ini terbatas ($n=6$ per kelompok) dan kovariat klinis penting seperti pola pemberian ASI dan penggunaan antibiotik maternal tidak dikontrol dalam subset ini..."*
+1. **Observasi**: *"Berdasarkan profil taksonomi (genus & spesies) dari 38 sampel feses bayi usia 3 bulan..."*
+2. **Angka Objektif**: *"Median kelimpahan relatif genus Bacteroides terukur jauh lebih tinggi pada kelompok persalinan vaginal dibandingkan kelompok sesar (6,07% vs 0,00%; Mann–Whitney U, p = 0,0002, q_BH = 0,0248) disertai pemisahan komposisi Bray–Curtis (PERMANOVA F = 4,95, p = 0,001)..."*
+3. **Ketidakpastian & Faktor Perancu**: *"Namun demikian, ukuran sampel pada demonstrasi ini masih terbatas ($n=19$ per kelompok) dan kovariat klinis penting seperti pola pemberian ASI dan penggunaan antibiotik maternal tidak dikontrol dalam subset ini..."*
 4. **Batas Kesimpulan**: *"Oleh karena itu, temuan ini menunjukkan asosiasi perbedaan komposisi awal mikrobioma usus dan tidak dapat disimpulkan sebagai hubungan kausalitas langsung dari metode persalinan."*
 
 ### ✅ Cek Paham Cepat (1 Menit)
