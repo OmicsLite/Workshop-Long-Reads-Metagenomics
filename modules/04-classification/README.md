@@ -95,21 +95,25 @@ Hirarki Keyakinan Identifikasi pada 16S rRNA Standar:
 
 ---
 
-## 4. Alur `Kraken2 → Bracken` & Peran Komplementer `Emu`
+## 4. Perbandingan Pendekatan Klasifikasi 16S Nanopore (`Kraken2`, `Bracken`, `minimap2`, & `Emu`)
 
-Di banyak pipeline metagenomik, `Kraken2` sering dipasangkan dengan **Bracken** (*Bayesian Reestimation of Abundance with Kraken*). Tugas Bracken adalah mengambil *read* yang tertahan di tingkat atas (Family/Genus) oleh LCA, lalu membaginya ulang secara probabilistik ke spesies di bawahnya memakai file `database1000mers.kmer_distrib`. Pada praktikum ini kita sengaja memakai laporan `Kraken2` langsung tanpa Bracken agar perilaku LCA tetap transparan dan tidak memperbesar *false positive* akibat error *indel* R9.4.1.
+Dalam ekosistem analisis 16S bacaan panjang Nanopore, **tidak ada satu algoritma tunggal yang unggul mutlak di semua situasi**. Masing-masing pendekatan—baik berbasis *$k$-mer* maupun *alignment*—memiliki mekanisme dan *trade-off* nyata:
 
-Sementara itu, untuk profil tingkat spesies pada bacaan panjang Nanopore, banyak pipeline riset menggunakan pendekatan berbasis *alignment* (penjajaran sekuens penuh) alih-alih *k-mer* semata—misalnya mode `minimap2` pada **ONT EPI2ME (`wf-16s`)** atau **`Emu`** (Curry et al., 2022, *Nature Methods*, [doi:10.1038/s41592-022-01520-4](https://doi.org/10.1038/s41592-022-01520-4)):
+1. **`Kraken2` (*k-mer* eksak + LCA)** *(dipakai di workshop ini)*: sangat cepat, hemat memori untuk database 16S, dan transparan berkat LCA (jika sekuens ambigu, otomatis naik ke Genus/Family). Keterbatasannya: pencocokan 35-mer eksak sensitif terhadap error *indel* R9.4.1 (pada Q10, peluang 35-mer utuh hanya $(0{,}90)^{35} \approx 2{,}5\%$), sehingga banyak *read* tertahan di Genus dan sebagian kecil *k-mer* dapat memicu *false positive* di tingkat Spesies.
+2. **`Kraken2 → Bracken`** *(pengayaan)*: mengambil *read* yang tertahan LCA di tingkat atas (Family/Genus) lalu membaginya ulang secara probabilistik ke spesies di bawahnya memakai file `database1000mers.kmer_distrib`. Pada praktikum ini kita sengaja memakai laporan `Kraken2` langsung tanpa Bracken agar perilaku LCA tetap transparan dan tidak memperbesar *false positive* akibat error *indel* R9.4.1.
+3. **`minimap2` + filter/LCA** *(mode alignment pada ONT EPI2ME `wf-16s`)*: menoleransi *indel* dan *mismatch* sepanjang seluruh amplikon 16S (~1,1–1,5 kb) tanpa patah seperti 35-mer eksak. Namun, *mapping* referensi mentah (*top-hit*) memiliki keterbatasan besar di tingkat Spesies karena kemiripan 16S antarspesies menyebabkan *multi-mapping*; tanpa ambang identitas ketat dan LCA, estimasi spesies mudah terpecah (*over-splitting*).
+4. **`Emu`** (Curry et al., 2022, *Nature Methods*, [doi:10.1038/s41592-022-01520-4](https://doi.org/10.1038/s41592-022-01520-4)): memadukan penjajaran *semi-global* `minimap2` (tahan *indel*) dengan algoritma iteratif *Expectation-Maximization* (EM) lintas seluruh sampel untuk memecahkan ambiguitas *multi-mapping* antarspesies. Keterbatasannya: komputasi lebih lambat/berat, sangat bergantung pada kelengkapan database bawaannya (rrnDB + NCBI), dan secara default menghasilkan estimasi kelimpahan relatif (bukan panggilan per-*read*).
 
-* **Prinsip Kerja Emu**: Menggunakan penjajaran *semi-global* `minimap2` terhadap database gabungan rrnDB + NCBI, kemudian memecahkan ambiguitas multi-mapping antarspesies dekat menggunakan algoritma iteratif *Expectation-Maximization* (EM).
-* **Catatan Kritis**: Tidak ada satu "standar emas" tunggal di bioinformatika 16S Nanopore—performa `Emu`, `minimap2`, maupun `Kraken2/Bracken` sangat dipengaruhi oleh kimia *flow cell* (R9.4.1 vs R10.4.1 Q20+) serta kelengkapan database rujukannya.
-* **Perbandingan Praktis**:
+> **Catatan Kritis**: Performa keempat metode di atas sangat dipengaruhi oleh **kimia *flow cell*** (R9.4.1 vs R10.4.1 Q20+), **panjang amplikon** (V3–V9 vs V1–V9), dan **kelengkapan database rujukan**. Untuk riset publikasi, praktik terbaik adalah memvalidasi pipeline pilihan Anda memakai kontrol positif (*mock community*).
 
-| Pendekatan | Kecepatan | Resolusi Utama | Cocok Digunakan Saat... |
+### Perbandingan Objektif Empat Pendekatan
+
+| Pendekatan | Mekanisme Utama | Kelebihan Utama | Keterbatasan Utama |
 |---|---|---|---|
-| **Kraken2 + NCBI Targeted Loci** *(Alur Utama Workshop)* | Sangat cepat (<1 detik/sampel) | Genus (sangat kuat) & Spesies terarah (*putative*) | Eksplorasi cepat, workshop di Google Colab, screening awal |
-| **Kraken2 + Bracken (1.000 bp)** *(Pengayaan)* | Sangat cepat | Re-estimasi kelimpahan Bayesian ke tingkat Spesies/Genus | Ingin mendistribusikan ulang read LCA secara probabilistik (waspadai *over-assignment* pada R9.4.1) |
-| **Alignment + EM (`Emu` / `minimap2` `wf-16s`)** *(Opsi Lanjutan)* | Sedang–Lambat (butuh RAM/CPU lebih besar) | Spesies lebih selektif (meredam error *indel* & *false positive*) | Analisis mendalam tingkat spesies di server lokal/HPC dengan validasi database |
+| **Kraken2 + NCBI Targeted Loci** *(Alur Workshop)* | Pencocokan 35-mer eksak + LCA | Sangat cepat (<1 dtk/sampel), RAM ringan (<20 MB), stabil & transparan di tingkat **Genus** | 35-mer eksak patah oleh *indel* R9.4.1; sensitivitas Spesies turun & rawan *false positive* ringan |
+| **Kraken2 + Bracken (1.000 bp)** | Re-estimasi Bayesian di atas laporan Kraken2 | Sangat cepat; mengembalikan *read* LCA ke tingkat Spesies/Genus | Berisiko memperbesar *false positive* (*over-assignment*) jika data masih tinggi error *indel* (R9.4.1) |
+| **`minimap2` + filter/LCA** *(EPI2ME `wf-16s`)* | Penjajaran *long-read* penuh (`-x map-ont`) + filter/LCA | Tahan *indel* sepanjang amplikon; kuat di tingkat **Genus** | *Multi-mapping* antarspesies 16S tinggi; estimasi **Spesies** rentan meleset jika filter identitas longgar |
+| **`Emu` (`minimap2` + EM)** | Penjajaran `minimap2` + *Expectation-Maximization* lintas sampel | Meredam *indel* sekaligus memecahkan *multi-mapping* antarspesies secara probabilistik | Lebih lambat & butuh RAM/CPU lebih besar; bergantung pada cakupan database bawaannya |
 
 ---
 
