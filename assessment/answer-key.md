@@ -16,10 +16,10 @@ Gunakan dokumen ini untuk mencocokkan jawaban Anda dan memahami landasan ilmiah 
 ### Soal 4: (C) Tersusun atas kombinasi wilayah lestari (*conserved*) universal dan 9 wilayah hipervariabel (V1–V9)
 * **Penjelasan**: Gen 16S rRNA ideal sebagai biomarker filogenetik prokariota karena wilayah lestarinya universal pada seluruh bakteri (memungkinkan penempelan primer PCR umum), sedangkan wilayah hipervariabelnya (V1 hingga V9) menyimpan divergensi urutan basa khas yang membedakan takson.
 
-### Soal 5: (B) Karena desain primer PCR laboratorium basah pada studi tersebut menargetkan wilayah V3–V9 (~1.140 bp), bukan V1–V9 (~1.500 bp)
-* **Penjelasan**: Publikasi asal dataset PRJNA637202 (Angell et al., 2020, *PeerJ*) merancang primer PCR amplikon untuk mengamplifikasi segmen V3 hingga V9 yang berukuran rata-rata ~1.140 bp. Memahami desain primer laboratorium basah mencegah kita menyetel batas filter yang salah (seperti 1.300 bp yang akan membuang >90% data valid).
+### Soal 5: (B) Karena desain primer PCR laboratorium basah pada studi tersebut menargetkan wilayah V3–V9 (≈1.140 bp), bukan V1–V9 (≈1.500 bp)
+* **Penjelasan**: Publikasi asal dataset PRJNA637202 (Angell et al., 2020, *PeerJ*) merancang primer PCR amplikon untuk mengamplifikasi segmen V3 hingga V9 yang berukuran rata-rata ≈1.140 bp. Memahami desain primer laboratorium basah mencegah kita menyetel batas filter yang salah (seperti 1.300 bp yang akan membuang >90% data valid).
 
-### Soal 6: (C) Banyak molekul PCR chimera memiliki panjang normal (~1.140–1.500 bp) sehingga lolos dari penyaringan ukuran panjang dan memerlukan deteksi algoritmik
+### Soal 6: (C) Banyak molekul PCR chimera memiliki panjang normal (≈1.140–1.500 bp) sehingga lolos dari penyaringan ukuran panjang dan memerlukan deteksi algoritmik
 * **Penjelasan**: Molekul chimera terjadi akibat pemanjangan primer yang terhenti pada satu molekul DNA cetakan lalu menempel pada cetakan dari spesies lain pada siklus berikutnya. Produk hibrida ini memiliki panjang amplikon yang normal sehingga tidak dapat dibedakan hanya dengan memotong ukuran panjang.
 
 ### Soal 7: (B) Mencocokkan potongan sub-sekuens $k$-mer minimizer secara cepat dan menugaskan takson berdasarkan Lowest Common Ancestor (LCA)

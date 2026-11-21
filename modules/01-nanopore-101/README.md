@@ -26,12 +26,12 @@ flowchart LR
 |---|---|---|---|
 | **Panjang Read** | 150–300 bp | 1.000 bp hingga > 1.000.000 bp | 1.000 bp hingga > 1.000.000 bp |
 | **Metode Deteksi** | Fluoresensi optik sintesis DNA | Fluktuasi arus ionik molekul tunggal | Fluktuasi arus ionik (dual-reader head) |
-| **Akurasi Per-Basa** | >99.9% (Q30) | ~90–93% (Q10–Q12) | >99% (Q20+) dengan model Dorado SUP |
+| **Akurasi Per-Basa** | >99.9% (Q30) | ≈90–93% (Q10–Q12) | >99% (Q20+) dengan model Dorado SUP |
 | **Error Profile** | Substitusi acak (*mismatches*) | Homopolymer indel (delesi/insersi) | Jauh lebih terkalibrasi di daerah homopolimer |
 | **Resolusi 16S** | Terbatas pada sub-region (V3–V4) | Menjangkau multi-region / Full-length | Full-length (V1–V9) dengan akurasi tinggi |
 
 > [!NOTE]
-> Dataset **PRJNA637202** yang digunakan pada praktikum workshop ini dihasilkan pada tahun 2020 menggunakan instrumen MinION dengan kimia **R9.4.1**. Kualitas rata-rata *reads* berada pada kisaran Phred Q10–Q12 (akurasi ~90–94%). Memahami karakteristik ini sangat krusial agar peserta tidak bingung mengapa filter kualitas diatur pada Phred $Q \ge 10$.
+> Dataset **PRJNA637202** yang digunakan pada praktikum workshop ini dihasilkan pada tahun 2020 menggunakan instrumen MinION dengan kimia **R9.4.1**. Kualitas rata-rata *reads* berada pada kisaran Phred Q10–Q12 (akurasi ≈90–94%). Memahami karakteristik ini sangat krusial agar peserta tidak bingung mengapa filter kualitas diatur pada Phred $Q \ge 10$.
 
 ---
 
@@ -42,7 +42,7 @@ Prinsip kerja alat sekuensing Nanopore (seperti MinION, GridION, PromethION) men
 1. **Membran Polimer Sintetis**: Membran resistif elektrik yang tidak dapat ditembus ion memisahkan dua kompartemen larutan elektrolit (*cis* dan *trans*).
 2. **Protein Nanopori**: Saluran protein nano (misal CsgG terekayasa) disematkan ke dalam membran.
 3. **Arus Ionik Dasar (*Baseline Current*)**: Medan listrik potensial diterapkan melintasi membran sehingga ion ($K^+$, $Cl^-$) mengalir menembus saluran pori, menghasilkan arus pikoampere ($pA$) yang stabil.
-4. **Motor Enzim Translokasi**: Molekul motor (helikase) membuka untai ganda DNA dan menuntun untai tunggal meluncur melewati rongga penyempitan pori (*reader constriction*) dengan kecepatan terkontrol (~400–450 basa/detik).
+4. **Motor Enzim Translokasi**: Molekul motor (helikase) membuka untai ganda DNA dan menuntun untai tunggal meluncur melewati rongga penyempitan pori (*reader constriction*) dengan kecepatan terkontrol (≈400–450 basa/detik).
 5. **Modulasi Hambatan Arus**: Saat $k$-mer basa nukleotida (kombinasi 5–6 nukleotida) berada di dalam pori, ukuran molekul dan muatannya merintangi aliran ion secara spesifik, menghasilkan pola fluktuasi arus listrik khas terhadap waktu (*squiggles*).
 
 > [!TIP]
@@ -63,8 +63,8 @@ flowchart TD
 ```
 
 ### Model Basecalling pada Dorado
-* **Fast Mode**: Komputasi sangat ringan (bisa berjalan di CPU laptop), akurasi lebih rendah (~Q10–Q12).
-* **HAC (High-Accuracy)**: Standar untuk sequencing harian, membutuhkan GPU terdedikasi (akurasi ~Q15–Q18).
+* **Fast Mode**: Komputasi sangat ringan (bisa berjalan di CPU laptop), akurasi lebih rendah (≈Q10–Q12).
+* **HAC (High-Accuracy)**: Standar untuk sequencing harian, membutuhkan GPU terdedikasi (akurasi ≈Q15–Q18).
 * **SUP (Super-Accuracy)**: Model neural network mendalam dengan parameter besar; mencapai modal akurasi >Q20 pada kimia R10.4.1.
 
 ---

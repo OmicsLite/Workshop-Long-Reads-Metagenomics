@@ -82,7 +82,7 @@ bracken -d database_16s \
         -l S \
         -t 10
 ```
-* `-r 1000`: Panjang rata-rata sekuens (~1.000–1.140 bp).
+* `-r 1000`: Panjang rata-rata sekuens (≈1.000–1.140 bp).
 * `-l S`: Tingkat taksonomi target (`S` untuk Spesies, `G` untuk Genus).
 * `-t 10`: Ambang batas deteksi minimum reads.
 

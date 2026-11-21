@@ -42,7 +42,7 @@ $$\text{ASCII Code} = Q + 33$$
 | Phred Score ($Q$) | Akurasi Basa ($1 - P$) | Peluang Error ($P$) | Nilai ASCII ($Q+33$) | Karakter ASCII Phred+33 |
 |:---:|:---:|:---:|:---:|:---:|
 | **Q10** | 90.0% | 1 dalam 10 (10%) | $10 + 33 = 43$ | `+` |
-| **Q12** | 93.7% | 1 dalam 16 (~6.3%) | $12 + 33 = 45$ | `-` |
+| **Q12** | 93.7% | 1 dalam 16 (≈6.3%) | $12 + 33 = 45$ | `-` |
 | **Q20** | 99.0% | 1 dalam 100 (1%) | $20 + 33 = 53$ | `5` |
 | **Q30** | 99.9% | 1 dalam 1.000 (0.1%) | $30 + 33 = 63$ | `?` |
 | **Q40** | 99.99% | 1 dalam 10.000 (0.01%) | $40 + 33 = 73$ | `I` |
@@ -72,7 +72,7 @@ Perintah ini menghasilkan tabel berisi: jumlah total *reads* (`num_seqs`), total
 
 ### B. Visualisasi Statistik Menyeluruh dengan `NanoPlot`
 `NanoPlot` (bagian dari ekosistem NanoPack) membaca file FASTQ dan menghasilkan laporan HTML interaktif:
-* **Histogram Distribusi Panjang Read**: Memeriksa apakah puncak amplikon berada di ~1.140 bp (target V3–V9).
+* **Histogram Distribusi Panjang Read**: Memeriksa apakah puncak amplikon berada di ≈1.140 bp (target V3–V9).
 * **Plot Bivariate Panjang vs Kualitas (*Bivariate dot/hex plot*)**: Menunjukkan korelasi antara panjang fragmen dengan rata-rata skor Phred.
 * **Kurva Kualitas Kumulatif**: Persentase data yang memiliki rata-rata kualitas $\ge Q10$, $\ge Q12$, atau $\ge Q15$.
 
@@ -105,7 +105,7 @@ seqkit seq -m 1000 -M 1700 -Q 10 input.fastq.gz -o filtered.fastq.gz
 
 > [!WARNING]
 > **Mitos Umum**: "Filtering panjang 1.000–1.700 bp otomatis membersihkan chimera."
-> **Fakta Ilmiah**: Selama siklus PCR amplikon, polimerase DNA yang terhenti di tengah jalan dapat berfungsi sebagai *primer* pada molekul cetakan dari spesies bakteri lain pada siklus berikutnya. Produk hibrida ini disebut **PCR Chimera**. Banyak molekul chimera memiliki **panjang yang persis normal (~1.140–1.500 bp)** sehingga lolos 100% dari penyaringan ukuran panjang!
+> **Fakta Ilmiah**: Selama siklus PCR amplikon, polimerase DNA yang terhenti di tengah jalan dapat berfungsi sebagai *primer* pada molekul cetakan dari spesies bakteri lain pada siklus berikutnya. Produk hibrida ini disebut **PCR Chimera**. Banyak molekul chimera memiliki **panjang yang persis normal (≈1.140–1.500 bp)** sehingga lolos 100% dari penyaringan ukuran panjang!
 > Deteksi chimera sejati membutuhkan algoritma pendeteksi bimer/multimer (seperti `vsearch --uchime_denovo`) atau model *Expectation-Maximization* berbasis referensi (`Emu`).
 
 ---

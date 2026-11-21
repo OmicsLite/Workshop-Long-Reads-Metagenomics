@@ -33,7 +33,7 @@ Karena file laporan Kraken2 (`.k2report`) memuat struktur hirarki indentasi teks
 
 ## 2. Standardisasi Kedalaman Sekuensing: Mengapa Perlu Rarefaction?
 
-Dalam percobaan sekuensing, jumlah *reads* yang diperoleh per sampel hampir selalu berbeda-beda (mis. Sampel V01 menghasilkan ~36.000 *reads*, sedangkan Sampel C06 menghasilkan ~26.000 *reads*).
+Dalam percobaan sekuensing, jumlah *reads* yang diperoleh per sampel hampir selalu berbeda-beda (mis. Sampel V01 menghasilkan ≈36.000 *reads*, sedangkan Sampel C06 menghasilkan ≈26.000 *reads*).
 
 ```text
 Masalah Kedalaman Tidak Rata:

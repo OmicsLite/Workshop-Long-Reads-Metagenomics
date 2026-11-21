@@ -35,7 +35,7 @@ Gen 16S rRNA sangat ideal digunakan sebagai penanda taksonomi molekuler bakteri 
 ### Soal 5
 Pada praktikum hands-on menggunakan dataset kohort feses bayi PRJNA637202 (Angell et al., 2020), mengapa kita mengatur batas penyaringan panjang read pada rentang 1.000–1.700 bp?
 * (A) Karena mesin Google Colab hanya sanggup memproses file berukuran tepat 1.000 bp
-* (B) Karena desain primer PCR laboratorium basah pada studi tersebut menargetkan wilayah V3–V9 (~1.140 bp), bukan V1–V9 (~1.500 bp)
+* (B) Karena desain primer PCR laboratorium basah pada studi tersebut menargetkan wilayah V3–V9 (≈1.140 bp), bukan V1–V9 (≈1.500 bp)
 * (C) Karena sekuens di luar rentang tersebut adalah DNA inang manusia
 * (D) Untuk mempercepat proses download database k-mer Kraken2
 
@@ -43,7 +43,7 @@ Pada praktikum hands-on menggunakan dataset kohort feses bayi PRJNA637202 (Angel
 Manakah pernyataan yang BENAR mengenai kemampuan filter ukuran panjang sekuens terhadap keberadaan molekul PCR *chimera*?
 * (A) Filter panjang 1.000–1.700 bp otomatis membersihkan 100% molekul chimera
 * (B) Molekul chimera tidak pernah terbentuk pada sekuensing amplikon Nanopore
-* (C) Banyak molekul PCR chimera memiliki panjang normal (~1.140–1.500 bp) sehingga lolos dari penyaringan ukuran panjang dan memerlukan deteksi algoritmik
+* (C) Banyak molekul PCR chimera memiliki panjang normal (≈1.140–1.500 bp) sehingga lolos dari penyaringan ukuran panjang dan memerlukan deteksi algoritmik
 * (D) Chimera hanya terbentuk jika sampel terkontaminasi oleh sel eukariota
 
 ### Soal 7

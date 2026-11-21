@@ -40,7 +40,7 @@ Setelah menyelesaikan rangkaian workshop ini, peserta diharapkan mampu:
 Praktikum *hands-on* menggunakan dataset publik nyata yang telah ter-deidentifikasi:
 * **Sumber Data**: BioProject NCBI **[PRJNA637202](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA637202)** (European Nucleotide Archive).
 * **Publikasi Asal**: Angell, I. L., et al. (2020). *"De novo species identification using 16S rRNA gene nanopore sequencing."* *PeerJ*, 8, e10029. DOI: [10.7717/peerj.10029](https://doi.org/10.7717/peerj.10029).
-* **Karakteristik Sampel**: Kohort feses bayi usia 3 bulan (*PreventADALL Study*), menargetkan wilayah gen 16S rRNA **V3–V9** (~1.140 bp) yang disekuensing dengan MinION (kimia R9.4.1).
+* **Karakteristik Sampel**: Kohort feses bayi usia 3 bulan (*PreventADALL Study*), menargetkan wilayah gen 16S rRNA **V3–V9** (≈1.140 bp) yang disekuensing dengan MinION (kimia R9.4.1).
 * **Desain Eksperimen**: Subset berimbang 12 sampel ($n=6$ persalinan **Vaginal** vs $n=6$ persalinan **Sesar**) yang dipetakan langsung dari berkas metadata klinis terbuka [`MetadataPublish.xlsx`](hands-on/MetadataPublish.xlsx) dan manifest [`sample_manifest.tsv`](hands-on/sample_manifest.tsv).
 
 ---

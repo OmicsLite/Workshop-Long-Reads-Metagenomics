@@ -28,7 +28,7 @@ Dokumen ini berisi daftar masalah teknis aktual yang mungkin dihadapi peserta se
 * **Penyebab**: Server ENA di Eropa kadang membatasi koneksi simultan saat puluhan peserta mengunduh bersamaan, atau jaringan kampus/instansi mengalami lonjakan trafik.
 * **Solusi**:
   1. Sel 2.1 sudah dilengkapi **pengunduh 2 lapis otomatis**:
-     - **Lapis 1 (Utama)**: Mengunduh 1 arsip ringkas `prjna637202_12samples_raw.tar.gz` (~490 MB) langsung dari **GitHub Releases** (`v1.0-workshop-data`), biasanya selesai dalam ~10–20 detik di server Colab.
+     - **Lapis 1 (Utama)**: Mengunduh 1 arsip ringkas `prjna637202_12samples_raw.tar.gz` (≈490 MB) langsung dari **GitHub Releases** (`v1.0-workshop-data`), biasanya selesai dalam ≈10–20 detik di server Colab.
      - **Lapis 2 (*Fallback* Otomatis)**: Jika GitHub Release tidak dapat diakses, skrip otomatis mengunduh per sampel melalui **HTTPS paralel (4 koneksi bersamaan)** dari ENA dengan flag `--continue --tries=5 --timeout=45` serta verifikasi ukuran byte eksak.
   2. Jika satu file gagal di tengah jalan, cukup **jalankan ulang Sel 2.1** — file yang sudah utuh akan otomatis dilewati (*ready*) dan hanya file yang belum lengkap yang dilanjutkan.
 
@@ -53,7 +53,7 @@ Dokumen ini berisi daftar masalah teknis aktual yang mungkin dihadapi peserta se
 * **Gejala**: Status runtime di kanan atas Colab berubah menjadi merah dengan notifikasi *"RAM exhausted"*, dan sesi terputus (*Disconnected*).
 * **Penyebab**: Peserta mencoba memuat database taksonomi Kraken2 standar yang terlalu besar (>50 GB) yang melampaui kapasitas RAM gratis Colab (12 GB).
 * **Solusi**:
-  1. Selalu gunakan **database resmi ONT EPI2ME NCBI Targeted Loci 16S/18S** (~8,6 MB terkompresi / ~15 MB memori) yang diunduh otomatis pada Sel 1.2 praktikum. Database ini dirancang khusus agar sangat ringan (<20 MB RAM) dan cepat saat dijalankan.
+  1. Selalu gunakan **database resmi ONT EPI2ME NCBI Targeted Loci 16S/18S** (≈8,6 MB terkompresi / ≈15 MB memori) yang diunduh otomatis pada Sel 1.2 praktikum. Database ini dirancang khusus agar sangat ringan (<20 MB RAM) dan cepat saat dijalankan.
   2. Klik menu **Runtime** $\rightarrow$ **Restart session**, jalankan kembali sel konfigurasi variabel (Sel 0.1), lalu lanjutkan ke sel analisis.
 
 ---

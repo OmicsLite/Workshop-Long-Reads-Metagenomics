@@ -11,7 +11,7 @@ Format ini sangat direkomendasikan agar peserta dari latar belakang klinis maupu
 | Waktu | Durasi | Sesi | Pokok Bahasan & Aktivitas |
 |---|---|---|---|
 | **09:00 - 09:15** | 15 Menit | **Pembukaan & Orientasi** | Sambutan, presensi, orientasi lingkungan Colab, dan pembagian tautan kerja. |
-| **09:15 - 09:50** | 35 Menit | **Kuliah Konsep 1** | **Fondasi Sekuensing Nanopore & Desain Amplikon 16S**<br>• Prinsip deteksi arus ionik & kimia R9 vs R10.<br>• Basecalling deep learning (`Dorado`).<br>• Amplicon 16S vs Shotgun metagenomics.<br>• Target amplikon V3–V9 (~1.140 bp) kohort *PreventADALL* (PRJNA637202). |
+| **09:15 - 09:50** | 35 Menit | **Kuliah Konsep 1** | **Fondasi Sekuensing Nanopore & Desain Amplikon 16S**<br>• Prinsip deteksi arus ionik & kimia R9 vs R10.<br>• Basecalling deep learning (`Dorado`).<br>• Amplicon 16S vs Shotgun metagenomics.<br>• Target amplikon V3–V9 (≈1.140 bp) kohort *PreventADALL* (PRJNA637202). |
 | **09:50 - 10:00** | 10 Menit | **Setup Runtime** | Peserta membuka notebook Colab, membuat salinan di Google Drive, dan menjalankan Sel 1.1 (`micromamba` setup) & Sel 1.2 (download & verifikasi database NCBI Targeted Loci 16S/18S). |
 | **10:00 - 10:35** | 35 Menit | **Hands-on Sesi 1** | **Kendali Mutu (QC) & Filtering Sekuens**<br>• Inspeksi metadata manifest (`sample_manifest.tsv`).<br>• Rangkuman statistik read mentah via `SeqKit stats`.<br>• Visualisasi interaktif panjang & kualitas dengan `NanoPlot`.<br>• Penyaringan terstandar panjang (1.000–1.700 bp) & kualitas ($Q \ge 10$) via `Chopper`. |
 | **10:35 - 10:45** | 10 Menit | *Coffee Break* | Istirahat sejenak sambil memastikan proses filtering 12 sampel selesai. |

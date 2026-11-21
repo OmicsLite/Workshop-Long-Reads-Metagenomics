@@ -8,7 +8,7 @@ Workshop **"Nanopore 16S rRNA Sequencing Analysis for Clinical Applications"** d
 
 ### 📋 Prasyarat Awal:
 1. **Akun Google**: Diperlukan untuk mengakses Google Colab dan menyimpan notebook di Google Drive Anda.
-2. **Koneksi Internet**: Untuk mengunduh dataset sekuensing FASTQ dan database taksonomi resmi ONT EPI2ME NCBI Targeted Loci 16S/18S (~8,6 MB terkompresi).
+2. **Koneksi Internet**: Untuk mengunduh dataset sekuensing FASTQ dan database taksonomi resmi ONT EPI2ME NCBI Targeted Loci 16S/18S (≈8,6 MB terkompresi).
 3. **Peramban Web Modern**: Google Chrome, Mozilla Firefox, Microsoft Edge, atau Safari versi terbaru dengan dukungan JavaScript aktif.
 
 ### 🚀 Langkah Menjalankan di Google Colab:
@@ -18,7 +18,7 @@ Workshop **"Nanopore 16S rRNA Sequencing Analysis for Clinical Applications"** d
 4. Jalankan sel berurutan dari atas ke bawah:
    - **Sel 0.1**: Inisialisasi parameter kerja dan direktori.
    - **Sel 1.1**: Memasang `micromamba` dan seluruh tools (`chopper`, `kraken2`, `krona`, `nanoplot`, `seqkit`). Proses ini memakan waktu < 2 menit tanpa perlu me-restart kernel Python!
-   - **Sel 1.2**: Mengunduh dan memverifikasi integritas checksum SHA-256 database taksonomi resmi ONT EPI2ME NCBI Targeted Loci 16S/18S (`ncbi_targeted_loci_kraken2.tar.gz`, ~8,6 MB terkompresi / ~15 MB terekstrak).
+   - **Sel 1.2**: Mengunduh dan memverifikasi integritas checksum SHA-256 database taksonomi resmi ONT EPI2ME NCBI Targeted Loci 16S/18S (`ncbi_targeted_loci_kraken2.tar.gz`, ≈8,6 MB terkompresi / ≈15 MB terekstrak).
 
 ---
 

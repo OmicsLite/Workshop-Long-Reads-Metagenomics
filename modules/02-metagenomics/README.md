@@ -3,8 +3,8 @@
 ## 🎯 Target Pembelajaran
 Setelah menyelesaikan modul ini, peserta mampu:
 1. Membedakan secara tegas antara analisis **16S rRNA gene amplicon sequencing** (metataxonomics/profiling taksonomi) dengan **shotgun metagenomics**.
-2. Memahami anatomi gen 16S rRNA (~1.500 bp), posisi daerah lestari (*conserved*) dan hipervariabel (V1–V9).
-3. Mengenali target amplikon dataset **PRJNA637202** (wilayah **V3–V9**, ~1.140 bp) dari studi kohort *PreventADALL* (Angell et al., 2020).
+2. Memahami anatomi gen 16S rRNA (≈1.500 bp), posisi daerah lestari (*conserved*) dan hipervariabel (V1–V9).
+3. Mengenali target amplikon dataset **PRJNA637202** (wilayah **V3–V9**, ≈1.140 bp) dari studi kohort *PreventADALL* (Angell et al., 2020).
 4. Mengidentifikasi sumber bias eksperimental: lisis sel/ekstraksi DNA, bias primer PCR, serta variasi jumlah salinan gen 16S (*Copy Number Variation* / CNV).
 5. Memahami pentingnya kontrol negatif (*kitome/splashome*) dan kontrol positif (*mock community*) dalam riset mikrobioma klinis.
 
@@ -38,7 +38,7 @@ flowchart TD
 
 ## 2. Struktur Gen 16S rRNA & Target Amplikon Dataset
 
-Gen 16S rRNA (~1.500 bp) menyandi RNA subunit kecil (30S) dari ribosom prokariota. Gen ini memiliki struktur mosaik:
+Gen 16S rRNA (≈1.500 bp) menyandi RNA subunit kecil (30S) dari ribosom prokariota. Gen ini memiliki struktur mosaik:
 - **Wilayah Lestari (Conserved Regions)**: Sekuens nukleotida sangat identik di semua filum bakteri karena fungsi esensialnya dalam translasi protein. Wilayah ini berfungsi sebagai tempat penempelan primer PCR universal (mis. 27F, 1492R).
 - **Wilayah Hipervariabel (V1–V9)**: Sembilan wilayah yang mengalami akumulasi mutasi divergensi evolusioner. Variasi sekuens inilah yang menjadi "sidik jari taksonomi" untuk membedakan genus dan spesies.
 
@@ -54,7 +54,7 @@ Dataset yang kita gunakan berasal dari publikasi:
 > **Angell, I. L., et al. (2020).** *"De novo species identification using 16S rRNA gene nanopore sequencing."* *PeerJ*, 8, e10029. DOI: [10.7717/peerj.10029](https://doi.org/10.7717/peerj.10029).
 
 - **Kohort**: Feses bayi usia 3 bulan dari studi *PreventADALL* (Preventing Atopic Dermatitis and ALLergies in children).
-- **Desain PCR**: Menggunakan primer yang menargetkan wilayah **V3 hingga V9** (~1.140 bp), bukan V1–V9 utuh.
+- **Desain PCR**: Menggunakan primer yang menargetkan wilayah **V3 hingga V9** (≈1.140 bp), bukan V1–V9 utuh.
 - **Implikasi Praktikum**: Distribusi panjang *reads* berpusat di sekitar **1,14 kb**. Oleh karena itu, batasan panjang pada tahap filtering disetel ke **1.000–1.700 bp** (bukan 1.300–1.700 bp). Jika kita memaksakan batas minimum 1.300 bp, >90% data valid akan terbuang secara salah!
 
 ---
@@ -99,7 +99,7 @@ Dalam penelitian klinis dan forensik mikrobioma, dua kontrol eksperimental adala
 
 ## 5. Ringkasan Modul
 - Sekuensing amplikon 16S adalah profil taksonomi gen penanda, bukan sekuensing menyeluruh (*shotgun*).
-- Dataset PRJNA637202 menargetkan wilayah **V3–V9 (~1.140 bp)** pada mikrobioma usus bayi.
+- Dataset PRJNA637202 menargetkan wilayah **V3–V9 (≈1.140 bp)** pada mikrobioma usus bayi.
 - Sinyal kelimpahan 16S dipengaruhi oleh bias ekstraksi, bias PCR, dan variasi jumlah kopi operon 16S per genom.
 - Deteksi takson tanpa kontrol negatif (*kitome*) dan kontrol positif (*mock community*) berisiko tinggi menimbulkan kesimpulan biologis yang salah.
 

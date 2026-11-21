@@ -74,4 +74,4 @@ Gunakan kamus istilah ini untuk memahami terminologi teknis bioinformatika, tekn
 * **SeqKit**: Utilitas baris perintah berbasis Go yang sangat cepat untuk inspeksi statistik, manipulasi, dan penyaringan berkas FASTA/FASTQ.
 * **Shannon Index ($H'$)**: Metrik Alpha Diversity yang mengukur ketidakpastian informasi dalam komunitas, mencerminkan kekayaan takson sekaligus kemerataan kelimpahannya.
 * **Simpson Index ($1 - D$)**: Metrik Alpha Diversity yang merepresentasikan probabilitas bahwa dua *reads* yang diambil secara acak dari suatu sampel berasal dari takson mikroba yang berbeda.
-* **16S rRNA Gen**: Gen penyandi subunit kecil RNA ribosom prokariota (~1.500 bp) yang tersusun atas daerah lestari universal dan 9 daerah hipervariabel (V1–V9), merupakan gen penanda taksonomi bakteri yang paling luas digunakan.
+* **16S rRNA Gen**: Gen penyandi subunit kecil RNA ribosom prokariota (≈1.500 bp) yang tersusun atas daerah lestari universal dan 9 daerah hipervariabel (V1–V9), merupakan gen penanda taksonomi bakteri yang paling luas digunakan.
