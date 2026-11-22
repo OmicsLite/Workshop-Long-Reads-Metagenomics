@@ -53,7 +53,6 @@ nanopore-16s-workshop/
 ├── LICENSE                            # 📜 Lisensi ganda: MIT (kode) & CC BY 4.0 (materi edukasi)
 ├── CITATION.cff                       # 🔖 Metadata sitasi repositori & atribusi dataset PRJNA637202
 ├── environment.yml                    # 📦 Spesifikasi environment Conda/Mamba mandiri
-├── AGENDA.md                          # ⏰ Rundown kegiatan (Format Intensif 180m & Compact 120m)
 ├── SETUP.md                           # ⚡ Panduan persiapan Google Colab & eksekusi lokal
 ├── FAQ.md                             # ❓ Pertanyaan umum teknis & metodologis
 ├── GLOSSARY.md                        # 📖 Kamus istilah bioinformatika & ekologi mikrobioma
