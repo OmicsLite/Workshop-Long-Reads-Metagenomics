@@ -12,18 +12,18 @@ Teknologi sekuensing Oxford Nanopore (ONT) mengidentifikasi urutan basa nitrogen
 * (D) Hamburan emisi sinar-X dari molekul polimerase yang sedang bergerak
 
 ### Soal 2
-Dalam format file FASTQ dengan pengodean standar Phred+33, berapakah nilai skor Phred teoretis untuk karakter ASCII `?` pada baris keempat?
-* (A) Q10 (Akurasi 90%)
-* (B) Q20 (Akurasi 99%)
-* (C) Q30 (Akurasi 99.9%)
-* (D) Q40 (Akurasi 99.99%)
+Dalam studi metagenomik, pertanyaan biologis utama manakah yang dapat dijawab langsung oleh **16S rRNA amplicon sequencing** dibandingkan **shotgun metagenomics**?
+* (A) Mengukur langsung gen resistensi antibiotik (AMR) dan virus di dalam sampel klinis
+* (B) Menyusun profil taksonomi *"siapa saja yang ada"* (bakteri & arkea) secara terarah dan tahan terhadap dominasi DNA inang manusia
+* (C) Merakit genom lengkap manusia dan jamur sekaligus dalam satu reaksi PCR
+* (D) Menentukan viabilitas (hidup/mati) sel bakteri tanpa kultur laboratorium
 
 ### Soal 3
-Berapakah probabilitas kesalahan identifikasi basa ($P_{error}$) untuk suatu nukleotida yang memiliki Phred Quality Score sebesar Q20?
-* (A) 10% (1 dalam 10)
-* (B) 1% (1 dalam 100)
-* (C) 0.1% (1 dalam 1.000)
-* (D) 0.01% (1 dalam 10.000)
+Pada analisis Beta Diversity, apa makna biologis jika uji PERMANOVA berbasis **Bray–Curtis** (kuantitatif) signifikan ($p = 0{,}001$), sedangkan **Jaccard** (kualitatif *presence/absence*) tidak signifikan ($p = 0{,}087$)?
+* (A) Kedua kelompok tidak berbagi satu pun jenis bakteri yang sama
+* (B) Daftar jenis bakteri yang terdeteksi di kedua kelompok banyak yang sama, tetapi **proporsi (%) bakteri dominannya** bergeser jauh antar-kelompok
+* (C) Proses filtering `Chopper` gagal berjalan pada salah satu kelompok
+* (D) Jumlah spesies unik (*Observed richness*) pasti berbeda 10 kali lipat antar-kelompok
 
 ### Soal 4
 Gen 16S rRNA sangat ideal digunakan sebagai penanda taksonomi molekuler bakteri karena memiliki karakteristik khusus, yaitu...

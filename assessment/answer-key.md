@@ -7,11 +7,11 @@ Gunakan dokumen ini untuk mencocokkan jawaban Anda dan memahami landasan ilmiah 
 ### Soal 1: (B) Perubahan arus ionik akibat molekul DNA menghalangi rongga penyempitan pori protein
 * **Penjelasan**: Oxford Nanopore mengukur arus listrik kontinu yang melintasi pori protein tertanam di membran sintetis. Saat untai tunggal DNA meluncur melalui rongga pembacaan pori, kombinasi basa nukleotida merintangi aliran ion elektrolit sehingga menimbulkan fluktuasi arus listrik khas yang kemudian diterjemahkan oleh basecaller neural network menjadi urutan basa.
 
-### Soal 2: (C) Q30 (Akurasi 99.9%)
-* **Penjelasan**: Berdasarkan rumus standar Phred+33: $\text{ASCII Code} = Q + 33$. Karakter ASCII `?` memiliki nomor desimal 63, sehingga $Q = 63 - 33 = 30$. Nilai Q30 setara dengan akurasi 99.9% (probabilitas error $P = 10^{-3} = 0.001$). Sementara itu, Q20 diwakili oleh karakter `5` ($20 + 33 = 53$).
+### Soal 2: (B) Menyusun profil taksonomi *"siapa saja yang ada"* (bakteri & arkea) secara terarah dan tahan terhadap dominasi DNA inang manusia
+* **Penjelasan**: Sekuensing amplikon 16S rRNA menargetkan satu gen penanda prokariota melalui PCR sehingga hanya memprofilkan komposisi taksonomi bakteri/arkaea (*"who is there?"*) tanpa terganggu DNA inang. Sebaliknya, analisis fungsi metabolik langsung, gen resistensi antibiotik (AMR), virus, maupun jamur (*"what are they doing?"*) membutuhkan *shotgun metagenomics*.
 
-### Soal 3: (B) 1% (1 dalam 100)
-* **Penjelasan**: Rumus probabilitas error Phred adalah $P = 10^{-Q/10}$. Untuk $Q = 20$, $P = 10^{-20/10} = 10^{-2} = 0.01$ atau 1%. Akurasi teoretis pembacaannya adalah $1 - 0.01 = 0.99$ (99%).
+### Soal 3: (B) Daftar jenis bakteri yang terdeteksi di kedua kelompok banyak yang sama, tetapi **proporsi (%) bakteri dominannya** bergeser jauh antar-kelompok
+* **Penjelasan**: **Jaccard** adalah metrik kualitatif (*presence/absence*) yang hanya memeriksa ada/tidaknya takson dengan bobot setara, sedangkan **Bray–Curtis** adalah metrik kuantitatif yang memperhitungkan proporsi kelimpahan (%). Pola ini persis terlihat pada 38 sampel workshop kita (Bray–Curtis $F = 4{,}95, p = 0{,}001$ vs Jaccard $F = 1{,}45, p = 0{,}087$).
 
 ### Soal 4: (C) Tersusun atas kombinasi wilayah lestari (*conserved*) universal dan 9 wilayah hipervariabel (V1–V9)
 * **Penjelasan**: Gen 16S rRNA ideal sebagai biomarker filogenetik prokariota karena wilayah lestarinya universal pada seluruh bakteri (memungkinkan penempelan primer PCR umum), sedangkan wilayah hipervariabelnya (V1 hingga V9) menyimpan divergensi urutan basa khas yang membedakan takson.
